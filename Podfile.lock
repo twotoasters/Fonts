@@ -1,0 +1,15 @@
+PODS:
+  - Smartling.i18n (1.0.3)
+  - TWTToast/Core (0.2)
+  - TWTToast/UIKit/AutoLayout (0.2)
+
+DEPENDENCIES:
+  - Smartling.i18n (= 1.0.3)
+  - TWTToast/Core (= 0.2)
+  - TWTToast/UIKit/AutoLayout (= 0.2)
+
+SPEC CHECKSUMS:
+  Smartling.i18n: ab95f58e4dba9cda78172e53a0d4d86f904655d6
+  TWTToast: a544d7aba1d1dd9ae554b1db0ae8f4ffc27f9bb1
+
+COCOAPODS: 0.29.0
