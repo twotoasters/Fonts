@@ -11,12 +11,16 @@
 #import <TWTToast/TWTHighOrderFunctions.h>
 
 #import "TWTFontFamiliesViewController.h"
+#import "TWTFontLoader.h"
 #import "TWTFontPreviewViewController.h"
+
 
 @implementation TWTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [TWTFontLoader loadFonts];
+
     TWTFontFamiliesViewController *fontFamiliesViewController = [[TWTFontFamiliesViewController alloc] init];
     TWTFontPreviewViewController *fontPreviewViewController = [[TWTFontPreviewViewController alloc] init];
 
@@ -31,6 +35,12 @@
     [self.window makeKeyAndVisible];
 
     return YES;
+}
+
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    return [TWTFontLoader openFontWithURL:url];
 }
 
 @end

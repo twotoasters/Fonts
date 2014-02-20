@@ -10,6 +10,7 @@
 		4918CD0518B5A232005D8E55 /* TWTFontFamiliesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4918CD0418B5A232005D8E55 /* TWTFontFamiliesViewController.m */; };
 		4918CD0818B5A24C005D8E55 /* TWTFontPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4918CD0718B5A24C005D8E55 /* TWTFontPreviewViewController.m */; };
 		4918CD0B18B5A7D3005D8E55 /* TWTFontsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4918CD0A18B5A7D3005D8E55 /* TWTFontsViewController.m */; };
+		492C100C18B64E12007CE8FF /* TWTFontLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 492C100B18B64E12007CE8FF /* TWTFontLoader.m */; };
 		497CAB2518B59C9C000DD7DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB2418B59C9C000DD7DE /* Foundation.framework */; };
 		497CAB2718B59C9C000DD7DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB2618B59C9C000DD7DE /* CoreGraphics.framework */; };
 		497CAB2918B59C9C000DD7DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB2818B59C9C000DD7DE /* UIKit.framework */; };
@@ -43,6 +44,8 @@
 		4918CD0718B5A24C005D8E55 /* TWTFontPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTFontPreviewViewController.m; sourceTree = "<group>"; };
 		4918CD0918B5A7D3005D8E55 /* TWTFontsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTFontsViewController.h; sourceTree = "<group>"; };
 		4918CD0A18B5A7D3005D8E55 /* TWTFontsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTFontsViewController.m; sourceTree = "<group>"; };
+		492C100A18B64E12007CE8FF /* TWTFontLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTFontLoader.h; sourceTree = "<group>"; };
+		492C100B18B64E12007CE8FF /* TWTFontLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTFontLoader.m; sourceTree = "<group>"; };
 		497CAB2118B59C9C000DD7DE /* Fonts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fonts.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		497CAB2418B59C9C000DD7DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		497CAB2618B59C9C000DD7DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -132,6 +135,8 @@
 				4918CD0718B5A24C005D8E55 /* TWTFontPreviewViewController.m */,
 				4918CD0918B5A7D3005D8E55 /* TWTFontsViewController.h */,
 				4918CD0A18B5A7D3005D8E55 /* TWTFontsViewController.m */,
+				492C100A18B64E12007CE8FF /* TWTFontLoader.h */,
+				492C100B18B64E12007CE8FF /* TWTFontLoader.m */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4918CD0818B5A24C005D8E55 /* TWTFontPreviewViewController.m in Sources */,
+				492C100C18B64E12007CE8FF /* TWTFontLoader.m in Sources */,
 				497CAB3518B59C9C000DD7DE /* TWTAppDelegate.m in Sources */,
 				4918CD0B18B5A7D3005D8E55 /* TWTFontsViewController.m in Sources */,
 				4918CD0518B5A232005D8E55 /* TWTFontFamiliesViewController.m in Sources */,

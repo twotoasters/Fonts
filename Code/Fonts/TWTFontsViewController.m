@@ -8,6 +8,8 @@
 
 #import "TWTFontsViewController.h"
 
+#import "TWTFontLoader.h"
+
 
 NSString *const kTWTFontsViewControllerSelectedFontNameDidChangeNotification = @"TWTFontsViewControllerSelectedFontNameDidChange";
 NSString *const kTWTFontsViewControllerSelectedFontNameKey = @"TWTFontsViewControllerSelectedFontName";
@@ -26,7 +28,20 @@ static NSString *const kCellIdentifier = @"font cell";
 
 - (id)init
 {
-    return [self initWithStyle:UITableViewStylePlain];
+    self = [super initWithStyle:UITableViewStylePlain];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(fontLoaderDidOpenFont:)
+                                                     name:kTWTFontLoaderDidOpenFontNotification
+                                                   object:[TWTFontLoader class]];
+    }
+    return self;
+}
+
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -74,6 +89,17 @@ static NSString *const kCellIdentifier = @"font cell";
     [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontsViewControllerSelectedFontNameDidChangeNotification
                                                         object:self
                                                       userInfo:@{ kTWTFontsViewControllerSelectedFontNameKey : _selectedFontName }];
+}
+
+
+#pragma mark - Notification Handlers
+
+- (void)fontLoaderDidOpenFont:(NSNotification *)notification
+{
+    self.fontNames = [[UIFont fontNamesForFamilyName:self.familyName] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    if (self.isViewLoaded) {
+        [self.tableView reloadData];
+    }
 }
 
 
