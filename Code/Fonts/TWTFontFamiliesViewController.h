@@ -1,5 +1,5 @@
 //
-//  TWTAppDelegate.h
+//  TWTFontFamiliesViewController.h
 //  Fonts
 //
 //  Created by Andrew Hershberger on 2/19/14.
@@ -9,8 +9,5 @@
 @import UIKit;
 
 
-@interface TWTAppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (strong, nonatomic) UIWindow *window;
-
+@interface TWTFontFamiliesViewController : UITableViewController
 @end

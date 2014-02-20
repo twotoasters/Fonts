@@ -1,1024 +1,522 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>27BCE612B01248A383999C07</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>libPods.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>497CAB1818B59C9C000DD7DE</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>497CAB2A18B59C9C000DD7DE</string>
-				<string>497CAB4318B59C9C000DD7DE</string>
-				<string>497CAB2318B59C9C000DD7DE</string>
-				<string>497CAB2218B59C9C000DD7DE</string>
-				<string>E2F41BEC17984DFF8A8DAD90</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB1918B59C9C000DD7DE</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>CLASSPREFIX</key>
-				<string>TWT</string>
-				<key>LastUpgradeCheck</key>
-				<string>0500</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Two Toasters, LLC</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>497CAB3B18B59C9C000DD7DE</key>
-					<dict>
-						<key>TestTargetID</key>
-						<string>497CAB2018B59C9C000DD7DE</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>497CAB1C18B59C9C000DD7DE</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-			</array>
-			<key>mainGroup</key>
-			<string>497CAB1818B59C9C000DD7DE</string>
-			<key>productRefGroup</key>
-			<string>497CAB2218B59C9C000DD7DE</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectReferences</key>
-			<array/>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>497CAB2018B59C9C000DD7DE</string>
-				<string>497CAB3B18B59C9C000DD7DE</string>
-			</array>
-		</dict>
-		<key>497CAB1C18B59C9C000DD7DE</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>497CAB4B18B59C9C000DD7DE</string>
-				<string>497CAB4C18B59C9C000DD7DE</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>497CAB1D18B59C9C000DD7DE</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>497CAB3518B59C9C000DD7DE</string>
-				<string>497CAB3118B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>497CAB1E18B59C9C000DD7DE</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>497CAB2718B59C9C000DD7DE</string>
-				<string>497CAB2918B59C9C000DD7DE</string>
-				<string>497CAB2518B59C9C000DD7DE</string>
-				<string>8A9E8EB6A9574275B35D8001</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>497CAB1F18B59C9C000DD7DE</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>497CAB2F18B59C9C000DD7DE</string>
-				<string>497CAB3718B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>497CAB2018B59C9C000DD7DE</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>497CAB4D18B59C9C000DD7DE</string>
-			<key>buildPhases</key>
-			<array>
-				<string>8CFC28C8A1444A9687B2E0B5</string>
-				<string>497CAB1D18B59C9C000DD7DE</string>
-				<string>497CAB1E18B59C9C000DD7DE</string>
-				<string>497CAB1F18B59C9C000DD7DE</string>
-				<string>8D792470A74A42E1BCC7592D</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Fonts</string>
-			<key>productName</key>
-			<string>Fonts</string>
-			<key>productReference</key>
-			<string>497CAB2118B59C9C000DD7DE</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>497CAB2118B59C9C000DD7DE</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Fonts.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>497CAB2218B59C9C000DD7DE</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>497CAB2118B59C9C000DD7DE</string>
-				<string>497CAB3C18B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB2318B59C9C000DD7DE</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>497CAB2418B59C9C000DD7DE</string>
-				<string>497CAB2618B59C9C000DD7DE</string>
-				<string>497CAB2818B59C9C000DD7DE</string>
-				<string>497CAB3D18B59C9C000DD7DE</string>
-				<string>27BCE612B01248A383999C07</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB2418B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Foundation.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/Foundation.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>497CAB2518B59C9C000DD7DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>497CAB2418B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>497CAB2618B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>CoreGraphics.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/CoreGraphics.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>497CAB2718B59C9C000DD7DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>497CAB2618B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>497CAB2818B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>UIKit.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/UIKit.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>497CAB2918B59C9C000DD7DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>497CAB2818B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>497CAB2A18B59C9C000DD7DE</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>497CAB3318B59C9C000DD7DE</string>
-				<string>497CAB3418B59C9C000DD7DE</string>
-				<string>497CAB3618B59C9C000DD7DE</string>
-				<string>497CAB2B18B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Fonts</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB2B18B59C9C000DD7DE</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>497CAB2C18B59C9C000DD7DE</string>
-				<string>497CAB2D18B59C9C000DD7DE</string>
-				<string>497CAB3018B59C9C000DD7DE</string>
-				<string>497CAB3218B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB2C18B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Fonts-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB2D18B59C9C000DD7DE</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>497CAB2E18B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB2E18B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB2F18B59C9C000DD7DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>497CAB2D18B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>497CAB3018B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>main.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB3118B59C9C000DD7DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>497CAB3018B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>497CAB3218B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>Fonts-Prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB3318B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>TWTAppDelegate.h</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB3418B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>TWTAppDelegate.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB3518B59C9C000DD7DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>497CAB3418B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>497CAB3618B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Images.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB3718B59C9C000DD7DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>497CAB3618B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>497CAB3818B59C9C000DD7DE</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>497CAB4A18B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>497CAB3918B59C9C000DD7DE</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>497CAB3E18B59C9C000DD7DE</string>
-				<string>497CAB4018B59C9C000DD7DE</string>
-				<string>497CAB3F18B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>497CAB3A18B59C9C000DD7DE</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>497CAB4818B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>497CAB3B18B59C9C000DD7DE</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>497CAB5018B59C9C000DD7DE</string>
-			<key>buildPhases</key>
-			<array>
-				<string>497CAB3818B59C9C000DD7DE</string>
-				<string>497CAB3918B59C9C000DD7DE</string>
-				<string>497CAB3A18B59C9C000DD7DE</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>497CAB4218B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>FontsTests</string>
-			<key>productName</key>
-			<string>FontsTests</string>
-			<key>productReference</key>
-			<string>497CAB3C18B59C9C000DD7DE</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle.unit-test</string>
-		</dict>
-		<key>497CAB3C18B59C9C000DD7DE</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>FontsTests.xctest</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>497CAB3D18B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>XCTest.framework</string>
-			<key>path</key>
-			<string>Library/Frameworks/XCTest.framework</string>
-			<key>sourceTree</key>
-			<string>DEVELOPER_DIR</string>
-		</dict>
-		<key>497CAB3E18B59C9C000DD7DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>497CAB3D18B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>497CAB3F18B59C9C000DD7DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>497CAB2418B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>497CAB4018B59C9C000DD7DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>497CAB2818B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>497CAB4118B59C9C000DD7DE</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>497CAB1918B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>497CAB2018B59C9C000DD7DE</string>
-			<key>remoteInfo</key>
-			<string>Fonts</string>
-		</dict>
-		<key>497CAB4218B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>497CAB2018B59C9C000DD7DE</string>
-			<key>targetProxy</key>
-			<string>497CAB4118B59C9C000DD7DE</string>
-		</dict>
-		<key>497CAB4318B59C9C000DD7DE</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>497CAB4918B59C9C000DD7DE</string>
-				<string>497CAB4418B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>FontsTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB4418B59C9C000DD7DE</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>497CAB4518B59C9C000DD7DE</string>
-				<string>497CAB4618B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB4518B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>FontsTests-Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB4618B59C9C000DD7DE</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>497CAB4718B59C9C000DD7DE</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB4718B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.strings</string>
-			<key>name</key>
-			<string>en</string>
-			<key>path</key>
-			<string>en.lproj/InfoPlist.strings</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB4818B59C9C000DD7DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>497CAB4618B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>497CAB4918B59C9C000DD7DE</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>FontsTests.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>497CAB4A18B59C9C000DD7DE</key>
-		<dict>
-			<key>fileRef</key>
-			<string>497CAB4918B59C9C000DD7DE</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>497CAB4B18B59C9C000DD7DE</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>2</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>497CAB4C18B59C9C000DD7DE</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>YES</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>7.0</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>TARGETED_DEVICE_FAMILY</key>
-				<string>2</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>497CAB4D18B59C9C000DD7DE</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>497CAB4E18B59C9C000DD7DE</string>
-				<string>497CAB4F18B59C9C000DD7DE</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>497CAB4E18B59C9C000DD7DE</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>E2F41BEC17984DFF8A8DAD90</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Fonts/Fonts-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Fonts/Fonts-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>497CAB4F18B59C9C000DD7DE</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>E2F41BEC17984DFF8A8DAD90</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME</key>
-				<string>LaunchImage</string>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Fonts/Fonts-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>Fonts/Fonts-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>app</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>497CAB5018B59C9C000DD7DE</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>497CAB5118B59C9C000DD7DE</string>
-				<string>497CAB5218B59C9C000DD7DE</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>497CAB5118B59C9C000DD7DE</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
-				<key>BUNDLE_LOADER</key>
-				<string>$(BUILT_PRODUCTS_DIR)/Fonts.app/Fonts</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Fonts/Fonts-Prefix.pch</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>FontsTests/FontsTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUNDLE_LOADER)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>xctest</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>497CAB5218B59C9C000DD7DE</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ARCHS</key>
-				<string>$(ARCHS_STANDARD_INCLUDING_64_BIT)</string>
-				<key>BUNDLE_LOADER</key>
-				<string>$(BUILT_PRODUCTS_DIR)/Fonts.app/Fonts</string>
-				<key>FRAMEWORK_SEARCH_PATHS</key>
-				<array>
-					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
-					<string>$(inherited)</string>
-					<string>$(DEVELOPER_FRAMEWORKS_DIR)</string>
-				</array>
-				<key>GCC_PRECOMPILE_PREFIX_HEADER</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Fonts/Fonts-Prefix.pch</string>
-				<key>INFOPLIST_FILE</key>
-				<string>FontsTests/FontsTests-Info.plist</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string>$(BUNDLE_LOADER)</string>
-				<key>WRAPPER_EXTENSION</key>
-				<string>xctest</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>8A9E8EB6A9574275B35D8001</key>
-		<dict>
-			<key>fileRef</key>
-			<string>27BCE612B01248A383999C07</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>8CFC28C8A1444A9687B2E0B5</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>8D792470A74A42E1BCC7592D</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/../Pods/Pods-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>E2F41BEC17984DFF8A8DAD90</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.xcconfig</string>
-			<key>path</key>
-			<string>../Pods/Pods.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>497CAB1918B59C9C000DD7DE</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4918CD0518B5A232005D8E55 /* TWTFontFamiliesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4918CD0418B5A232005D8E55 /* TWTFontFamiliesViewController.m */; };
+		4918CD0818B5A24C005D8E55 /* TWTFontPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4918CD0718B5A24C005D8E55 /* TWTFontPreviewViewController.m */; };
+		4918CD0B18B5A7D3005D8E55 /* TWTFontsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4918CD0A18B5A7D3005D8E55 /* TWTFontsViewController.m */; };
+		497CAB2518B59C9C000DD7DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB2418B59C9C000DD7DE /* Foundation.framework */; };
+		497CAB2718B59C9C000DD7DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB2618B59C9C000DD7DE /* CoreGraphics.framework */; };
+		497CAB2918B59C9C000DD7DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB2818B59C9C000DD7DE /* UIKit.framework */; };
+		497CAB2F18B59C9C000DD7DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 497CAB2D18B59C9C000DD7DE /* InfoPlist.strings */; };
+		497CAB3118B59C9C000DD7DE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 497CAB3018B59C9C000DD7DE /* main.m */; };
+		497CAB3518B59C9C000DD7DE /* TWTAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 497CAB3418B59C9C000DD7DE /* TWTAppDelegate.m */; };
+		497CAB3718B59C9C000DD7DE /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 497CAB3618B59C9C000DD7DE /* Images.xcassets */; };
+		497CAB3E18B59C9C000DD7DE /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB3D18B59C9C000DD7DE /* XCTest.framework */; };
+		497CAB3F18B59C9C000DD7DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB2418B59C9C000DD7DE /* Foundation.framework */; };
+		497CAB4018B59C9C000DD7DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB2818B59C9C000DD7DE /* UIKit.framework */; };
+		497CAB4818B59C9C000DD7DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 497CAB4618B59C9C000DD7DE /* InfoPlist.strings */; };
+		497CAB4A18B59C9C000DD7DE /* FontsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 497CAB4918B59C9C000DD7DE /* FontsTests.m */; };
+		8A9E8EB6A9574275B35D8001 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BCE612B01248A383999C07 /* libPods.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		497CAB4118B59C9C000DD7DE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 497CAB1918B59C9C000DD7DE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 497CAB2018B59C9C000DD7DE;
+			remoteInfo = Fonts;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		27BCE612B01248A383999C07 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		4918CD0318B5A232005D8E55 /* TWTFontFamiliesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTFontFamiliesViewController.h; sourceTree = "<group>"; };
+		4918CD0418B5A232005D8E55 /* TWTFontFamiliesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTFontFamiliesViewController.m; sourceTree = "<group>"; };
+		4918CD0618B5A24C005D8E55 /* TWTFontPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTFontPreviewViewController.h; sourceTree = "<group>"; };
+		4918CD0718B5A24C005D8E55 /* TWTFontPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTFontPreviewViewController.m; sourceTree = "<group>"; };
+		4918CD0918B5A7D3005D8E55 /* TWTFontsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTFontsViewController.h; sourceTree = "<group>"; };
+		4918CD0A18B5A7D3005D8E55 /* TWTFontsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTFontsViewController.m; sourceTree = "<group>"; };
+		497CAB2118B59C9C000DD7DE /* Fonts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fonts.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		497CAB2418B59C9C000DD7DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		497CAB2618B59C9C000DD7DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		497CAB2818B59C9C000DD7DE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		497CAB2C18B59C9C000DD7DE /* Fonts-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Fonts-Info.plist"; sourceTree = "<group>"; };
+		497CAB2E18B59C9C000DD7DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		497CAB3018B59C9C000DD7DE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		497CAB3218B59C9C000DD7DE /* Fonts-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Fonts-Prefix.pch"; sourceTree = "<group>"; };
+		497CAB3318B59C9C000DD7DE /* TWTAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TWTAppDelegate.h; sourceTree = "<group>"; };
+		497CAB3418B59C9C000DD7DE /* TWTAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TWTAppDelegate.m; sourceTree = "<group>"; };
+		497CAB3618B59C9C000DD7DE /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		497CAB3C18B59C9C000DD7DE /* FontsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FontsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		497CAB3D18B59C9C000DD7DE /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		497CAB4518B59C9C000DD7DE /* FontsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FontsTests-Info.plist"; sourceTree = "<group>"; };
+		497CAB4718B59C9C000DD7DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		497CAB4918B59C9C000DD7DE /* FontsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FontsTests.m; sourceTree = "<group>"; };
+		E2F41BEC17984DFF8A8DAD90 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		497CAB1E18B59C9C000DD7DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				497CAB2718B59C9C000DD7DE /* CoreGraphics.framework in Frameworks */,
+				497CAB2918B59C9C000DD7DE /* UIKit.framework in Frameworks */,
+				497CAB2518B59C9C000DD7DE /* Foundation.framework in Frameworks */,
+				8A9E8EB6A9574275B35D8001 /* libPods.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		497CAB3918B59C9C000DD7DE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				497CAB3E18B59C9C000DD7DE /* XCTest.framework in Frameworks */,
+				497CAB4018B59C9C000DD7DE /* UIKit.framework in Frameworks */,
+				497CAB3F18B59C9C000DD7DE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		497CAB1818B59C9C000DD7DE = {
+			isa = PBXGroup;
+			children = (
+				497CAB2A18B59C9C000DD7DE /* Fonts */,
+				497CAB4318B59C9C000DD7DE /* FontsTests */,
+				497CAB2318B59C9C000DD7DE /* Frameworks */,
+				497CAB2218B59C9C000DD7DE /* Products */,
+				E2F41BEC17984DFF8A8DAD90 /* Pods.xcconfig */,
+			);
+			sourceTree = "<group>";
+		};
+		497CAB2218B59C9C000DD7DE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				497CAB2118B59C9C000DD7DE /* Fonts.app */,
+				497CAB3C18B59C9C000DD7DE /* FontsTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		497CAB2318B59C9C000DD7DE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				497CAB2418B59C9C000DD7DE /* Foundation.framework */,
+				497CAB2618B59C9C000DD7DE /* CoreGraphics.framework */,
+				497CAB2818B59C9C000DD7DE /* UIKit.framework */,
+				497CAB3D18B59C9C000DD7DE /* XCTest.framework */,
+				27BCE612B01248A383999C07 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		497CAB2A18B59C9C000DD7DE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				497CAB3318B59C9C000DD7DE /* TWTAppDelegate.h */,
+				497CAB3418B59C9C000DD7DE /* TWTAppDelegate.m */,
+				497CAB3618B59C9C000DD7DE /* Images.xcassets */,
+				497CAB2B18B59C9C000DD7DE /* Supporting Files */,
+				4918CD0318B5A232005D8E55 /* TWTFontFamiliesViewController.h */,
+				4918CD0418B5A232005D8E55 /* TWTFontFamiliesViewController.m */,
+				4918CD0618B5A24C005D8E55 /* TWTFontPreviewViewController.h */,
+				4918CD0718B5A24C005D8E55 /* TWTFontPreviewViewController.m */,
+				4918CD0918B5A7D3005D8E55 /* TWTFontsViewController.h */,
+				4918CD0A18B5A7D3005D8E55 /* TWTFontsViewController.m */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		497CAB2B18B59C9C000DD7DE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				497CAB2C18B59C9C000DD7DE /* Fonts-Info.plist */,
+				497CAB2D18B59C9C000DD7DE /* InfoPlist.strings */,
+				497CAB3018B59C9C000DD7DE /* main.m */,
+				497CAB3218B59C9C000DD7DE /* Fonts-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		497CAB4318B59C9C000DD7DE /* FontsTests */ = {
+			isa = PBXGroup;
+			children = (
+				497CAB4918B59C9C000DD7DE /* FontsTests.m */,
+				497CAB4418B59C9C000DD7DE /* Supporting Files */,
+			);
+			path = FontsTests;
+			sourceTree = "<group>";
+		};
+		497CAB4418B59C9C000DD7DE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				497CAB4518B59C9C000DD7DE /* FontsTests-Info.plist */,
+				497CAB4618B59C9C000DD7DE /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		497CAB2018B59C9C000DD7DE /* Fonts */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 497CAB4D18B59C9C000DD7DE /* Build configuration list for PBXNativeTarget "Fonts" */;
+			buildPhases = (
+				8CFC28C8A1444A9687B2E0B5 /* Check Pods Manifest.lock */,
+				497CAB1D18B59C9C000DD7DE /* Sources */,
+				497CAB1E18B59C9C000DD7DE /* Frameworks */,
+				497CAB1F18B59C9C000DD7DE /* Resources */,
+				8D792470A74A42E1BCC7592D /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Fonts;
+			productName = Fonts;
+			productReference = 497CAB2118B59C9C000DD7DE /* Fonts.app */;
+			productType = "com.apple.product-type.application";
+		};
+		497CAB3B18B59C9C000DD7DE /* FontsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 497CAB5018B59C9C000DD7DE /* Build configuration list for PBXNativeTarget "FontsTests" */;
+			buildPhases = (
+				497CAB3818B59C9C000DD7DE /* Sources */,
+				497CAB3918B59C9C000DD7DE /* Frameworks */,
+				497CAB3A18B59C9C000DD7DE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				497CAB4218B59C9C000DD7DE /* PBXTargetDependency */,
+			);
+			name = FontsTests;
+			productName = FontsTests;
+			productReference = 497CAB3C18B59C9C000DD7DE /* FontsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		497CAB1918B59C9C000DD7DE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TWT;
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Two Toasters, LLC";
+				TargetAttributes = {
+					497CAB3B18B59C9C000DD7DE = {
+						TestTargetID = 497CAB2018B59C9C000DD7DE;
+					};
+				};
+			};
+			buildConfigurationList = 497CAB1C18B59C9C000DD7DE /* Build configuration list for PBXProject "Fonts" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 497CAB1818B59C9C000DD7DE;
+			productRefGroup = 497CAB2218B59C9C000DD7DE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				497CAB2018B59C9C000DD7DE /* Fonts */,
+				497CAB3B18B59C9C000DD7DE /* FontsTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		497CAB1F18B59C9C000DD7DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				497CAB2F18B59C9C000DD7DE /* InfoPlist.strings in Resources */,
+				497CAB3718B59C9C000DD7DE /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		497CAB3A18B59C9C000DD7DE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				497CAB4818B59C9C000DD7DE /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8CFC28C8A1444A9687B2E0B5 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8D792470A74A42E1BCC7592D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		497CAB1D18B59C9C000DD7DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4918CD0818B5A24C005D8E55 /* TWTFontPreviewViewController.m in Sources */,
+				497CAB3518B59C9C000DD7DE /* TWTAppDelegate.m in Sources */,
+				4918CD0B18B5A7D3005D8E55 /* TWTFontsViewController.m in Sources */,
+				4918CD0518B5A232005D8E55 /* TWTFontFamiliesViewController.m in Sources */,
+				497CAB3118B59C9C000DD7DE /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		497CAB3818B59C9C000DD7DE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				497CAB4A18B59C9C000DD7DE /* FontsTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		497CAB4218B59C9C000DD7DE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 497CAB2018B59C9C000DD7DE /* Fonts */;
+			targetProxy = 497CAB4118B59C9C000DD7DE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		497CAB2D18B59C9C000DD7DE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				497CAB2E18B59C9C000DD7DE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		497CAB4618B59C9C000DD7DE /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				497CAB4718B59C9C000DD7DE /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		497CAB4B18B59C9C000DD7DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		497CAB4C18B59C9C000DD7DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		497CAB4E18B59C9C000DD7DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2F41BEC17984DFF8A8DAD90 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Fonts/Fonts-Prefix.pch";
+				INFOPLIST_FILE = "Fonts/Fonts-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		497CAB4F18B59C9C000DD7DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2F41BEC17984DFF8A8DAD90 /* Pods.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Fonts/Fonts-Prefix.pch";
+				INFOPLIST_FILE = "Fonts/Fonts-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		497CAB5118B59C9C000DD7DE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Fonts.app/Fonts";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Fonts/Fonts-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FontsTests/FontsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		497CAB5218B59C9C000DD7DE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Fonts.app/Fonts";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Fonts/Fonts-Prefix.pch";
+				INFOPLIST_FILE = "FontsTests/FontsTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		497CAB1C18B59C9C000DD7DE /* Build configuration list for PBXProject "Fonts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				497CAB4B18B59C9C000DD7DE /* Debug */,
+				497CAB4C18B59C9C000DD7DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		497CAB4D18B59C9C000DD7DE /* Build configuration list for PBXNativeTarget "Fonts" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				497CAB4E18B59C9C000DD7DE /* Debug */,
+				497CAB4F18B59C9C000DD7DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		497CAB5018B59C9C000DD7DE /* Build configuration list for PBXNativeTarget "FontsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				497CAB5118B59C9C000DD7DE /* Debug */,
+				497CAB5218B59C9C000DD7DE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 497CAB1918B59C9C000DD7DE /* Project object */;
+}
