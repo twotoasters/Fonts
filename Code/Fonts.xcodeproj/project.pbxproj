@@ -24,6 +24,9 @@
 		497CAB4818B59C9C000DD7DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 497CAB4618B59C9C000DD7DE /* InfoPlist.strings */; };
 		497CAB4A18B59C9C000DD7DE /* FontsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 497CAB4918B59C9C000DD7DE /* FontsTests.m */; };
 		49A089BA1910504700283FE4 /* TWTEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A089B91910504700283FE4 /* TWTEnvironment.m */; };
+		49A089BD1910523C00283FE4 /* TWTTextEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A089BC1910523C00283FE4 /* TWTTextEditorViewController.m */; };
+		49A089C01910528400283FE4 /* UIViewController+Fonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A089BF1910528400283FE4 /* UIViewController+Fonts.m */; };
+		49A089C31910564C00283FE4 /* TWTUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A089C21910564C00283FE4 /* TWTUserDefaults.m */; };
 		8A9E8EB6A9574275B35D8001 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BCE612B01248A383999C07 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +68,12 @@
 		497CAB4918B59C9C000DD7DE /* FontsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FontsTests.m; sourceTree = "<group>"; };
 		49A089B81910504700283FE4 /* TWTEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTEnvironment.h; sourceTree = "<group>"; };
 		49A089B91910504700283FE4 /* TWTEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTEnvironment.m; sourceTree = "<group>"; };
+		49A089BB1910523C00283FE4 /* TWTTextEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTTextEditorViewController.h; sourceTree = "<group>"; };
+		49A089BC1910523C00283FE4 /* TWTTextEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTTextEditorViewController.m; sourceTree = "<group>"; };
+		49A089BE1910528400283FE4 /* UIViewController+Fonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Fonts.h"; sourceTree = "<group>"; };
+		49A089BF1910528400283FE4 /* UIViewController+Fonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Fonts.m"; sourceTree = "<group>"; };
+		49A089C11910564C00283FE4 /* TWTUserDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTUserDefaults.h; sourceTree = "<group>"; };
+		49A089C21910564C00283FE4 /* TWTUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTUserDefaults.m; sourceTree = "<group>"; };
 		E2F41BEC17984DFF8A8DAD90 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -142,6 +151,12 @@
 				492C100B18B64E12007CE8FF /* TWTFontLoader.m */,
 				49A089B81910504700283FE4 /* TWTEnvironment.h */,
 				49A089B91910504700283FE4 /* TWTEnvironment.m */,
+				49A089BB1910523C00283FE4 /* TWTTextEditorViewController.h */,
+				49A089BC1910523C00283FE4 /* TWTTextEditorViewController.m */,
+				49A089BE1910528400283FE4 /* UIViewController+Fonts.h */,
+				49A089BF1910528400283FE4 /* UIViewController+Fonts.m */,
+				49A089C11910564C00283FE4 /* TWTUserDefaults.h */,
+				49A089C21910564C00283FE4 /* TWTUserDefaults.m */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -309,12 +324,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49A089C31910564C00283FE4 /* TWTUserDefaults.m in Sources */,
 				4918CD0818B5A24C005D8E55 /* TWTFontPreviewViewController.m in Sources */,
 				49A089BA1910504700283FE4 /* TWTEnvironment.m in Sources */,
+				49A089BD1910523C00283FE4 /* TWTTextEditorViewController.m in Sources */,
 				492C100C18B64E12007CE8FF /* TWTFontLoader.m in Sources */,
 				497CAB3518B59C9C000DD7DE /* TWTAppDelegate.m in Sources */,
 				4918CD0B18B5A7D3005D8E55 /* TWTFontsViewController.m in Sources */,
 				4918CD0518B5A232005D8E55 /* TWTFontFamiliesViewController.m in Sources */,
+				49A089C01910528400283FE4 /* UIViewController+Fonts.m in Sources */,
 				497CAB3118B59C9C000DD7DE /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

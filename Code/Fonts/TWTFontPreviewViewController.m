@@ -10,7 +10,11 @@
 
 #import <TWTToast/UIView+TWTConvenientConstraintAddition.h>
 
+#import "TWTEnvironment.h"
 #import "TWTFontsViewController.h"
+#import "TWTTextEditorViewController.h"
+#import "TWTUserDefaults.h"
+#import "UIViewController+Fonts.h"
 
 
 @interface TWTFontPreviewViewController ()
@@ -25,11 +29,14 @@
 
 @property (nonatomic, strong, readonly) NSNumberFormatter *pointSizeNumberFormatter;
 
+@property (nonatomic, strong) TWTUserDefaults *userDefaults;
+
 @end
 
 
 @implementation TWTFontPreviewViewController
 @synthesize pointSizeNumberFormatter = _pointSizeNumberFormatter;
+@synthesize userDefaults = _userDefaults;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -53,6 +60,10 @@
 
         self.toolbarItems = @[ fontSizeItem, flexibleSpace, ascenderItem, flexibleSpace, descenderItem ];
 
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                                               target:self
+                                                                                               action:@selector(editButtonTapped)];
+
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(fontsViewControllerSelectedFontNameDidChange:)
                                                      name:kTWTFontsViewControllerSelectedFontNameDidChangeNotification
@@ -75,7 +86,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     UILabel *label = [[UILabel alloc] init];
-    label.text = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ\nabcdefghijklmnopqrstuvwxyz\n0123456789\n@.,:;%$#!?()'\"‘’“”/\\";
+    label.text = self.userDefaults.previewText;
     label.numberOfLines = 0;
     label.textAlignment = NSTextAlignmentCenter;
     label.translatesAutoresizingMaskIntoConstraints = NO;
@@ -138,6 +149,15 @@
 }
 
 
+- (TWTUserDefaults *)userDefaults
+{
+    if (!_userDefaults) {
+        _userDefaults = [[TWTUserDefaults alloc] init];
+    }
+    return _userDefaults;
+}
+
+
 #pragma mark - Notification Handlers
 
 - (void)fontsViewControllerSelectedFontNameDidChange:(NSNotification *)notification
@@ -151,6 +171,30 @@
 - (void)fontSizeSliderValueChanged:(UISlider *)fontSizeSlider
 {
     self.fontSize = round(fontSizeSlider.value);
+}
+
+
+- (void)editButtonTapped
+{
+    TWTTextEditorViewController *viewController = [[TWTTextEditorViewController alloc] init];
+    viewController.title = NSLocalizedString(@"Edit Preview", nil);
+    viewController.text = self.label.text;
+    __weak typeof(viewController) weakViewController = viewController;
+    viewController.twt_completion = ^(BOOL finished) {
+        if (finished) {
+            self.label.text = weakViewController.text;
+            self.userDefaults.previewText = weakViewController.text;
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
+    };
+
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+
+    if (TWTUserInterfaceIdiomIsPad()) {
+        navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+
+    [self presentViewController:navigationController animated:YES completion:nil];
 }
 
 
