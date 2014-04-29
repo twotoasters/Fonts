@@ -15,7 +15,6 @@
 
 @interface TWTFontPreviewViewController ()
 
-@property (nonatomic, copy) NSString *fontName;
 @property (nonatomic) CGFloat fontSize;
 
 @property (nonatomic, weak) UILabel *label;
@@ -163,11 +162,11 @@
 
     self.title = self.fontName;
 
-    self.fontSizeLabel.text = [NSString stringWithFormat:@"Size: %@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.pointSize)]];
+    self.fontSizeLabel.text = [NSString stringWithFormat:@"%@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.pointSize)]];
     [self.fontSizeLabel sizeToFit];
-    self.ascenderLabel.text = [NSString stringWithFormat:@"Ascender: %@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.ascender)]];
+    self.ascenderLabel.text = [NSString stringWithFormat:@"↑ %@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.ascender)]];
     [self.ascenderLabel sizeToFit];
-    self.descenderLabel.text = [NSString stringWithFormat:@"Descender: %@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.descender)]];
+    self.descenderLabel.text = [NSString stringWithFormat:@"↓ %@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.descender)]];
     [self.descenderLabel sizeToFit];
 
     self.label.font = font;

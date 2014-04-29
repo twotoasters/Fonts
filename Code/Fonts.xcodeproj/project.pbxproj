@@ -23,6 +23,7 @@
 		497CAB4018B59C9C000DD7DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB2818B59C9C000DD7DE /* UIKit.framework */; };
 		497CAB4818B59C9C000DD7DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 497CAB4618B59C9C000DD7DE /* InfoPlist.strings */; };
 		497CAB4A18B59C9C000DD7DE /* FontsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 497CAB4918B59C9C000DD7DE /* FontsTests.m */; };
+		49A089BA1910504700283FE4 /* TWTEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A089B91910504700283FE4 /* TWTEnvironment.m */; };
 		8A9E8EB6A9574275B35D8001 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BCE612B01248A383999C07 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,8 @@
 		497CAB4518B59C9C000DD7DE /* FontsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FontsTests-Info.plist"; sourceTree = "<group>"; };
 		497CAB4718B59C9C000DD7DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		497CAB4918B59C9C000DD7DE /* FontsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FontsTests.m; sourceTree = "<group>"; };
+		49A089B81910504700283FE4 /* TWTEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTEnvironment.h; sourceTree = "<group>"; };
+		49A089B91910504700283FE4 /* TWTEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTEnvironment.m; sourceTree = "<group>"; };
 		E2F41BEC17984DFF8A8DAD90 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -137,6 +140,8 @@
 				4918CD0A18B5A7D3005D8E55 /* TWTFontsViewController.m */,
 				492C100A18B64E12007CE8FF /* TWTFontLoader.h */,
 				492C100B18B64E12007CE8FF /* TWTFontLoader.m */,
+				49A089B81910504700283FE4 /* TWTEnvironment.h */,
+				49A089B91910504700283FE4 /* TWTEnvironment.m */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -220,6 +225,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = "Two Toasters, LLC";
 				TargetAttributes = {
+					497CAB2018B59C9C000DD7DE = {
+						DevelopmentTeam = TYQ894B3WB;
+					};
 					497CAB3B18B59C9C000DD7DE = {
 						TestTargetID = 497CAB2018B59C9C000DD7DE;
 					};
@@ -302,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4918CD0818B5A24C005D8E55 /* TWTFontPreviewViewController.m in Sources */,
+				49A089BA1910504700283FE4 /* TWTEnvironment.m in Sources */,
 				492C100C18B64E12007CE8FF /* TWTFontLoader.m in Sources */,
 				497CAB3518B59C9C000DD7DE /* TWTAppDelegate.m in Sources */,
 				4918CD0B18B5A7D3005D8E55 /* TWTFontsViewController.m in Sources */,
@@ -426,10 +435,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fonts/Fonts-Prefix.pch";
 				INFOPLIST_FILE = "Fonts/Fonts-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -440,10 +451,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fonts/Fonts-Prefix.pch";
 				INFOPLIST_FILE = "Fonts/Fonts-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
