@@ -8,7 +8,7 @@
 
 #import "TWTAppDelegate.h"
 
-#import <TWTToast/TWTHighOrderFunctions.h>
+#import <TWTToast/TWTBlockEnumeration.h>
 
 #import "TWTFontFamiliesViewController.h"
 #import "TWTFontLoader.h"
@@ -25,9 +25,11 @@
     TWTFontPreviewViewController *fontPreviewViewController = [[TWTFontPreviewViewController alloc] init];
 
     UISplitViewController *splitViewController = [[UISplitViewController alloc] init];
-    splitViewController.viewControllers = TWTSimpleMap(@[ fontFamiliesViewController, fontPreviewViewController ], ^id(UIViewController *viewController) {
+
+    NSArray *viewControllers = @[ fontFamiliesViewController, fontPreviewViewController ];
+    splitViewController.viewControllers = [viewControllers twt_collectWithBlock:^id(UIViewController *viewController) {
         return [[UINavigationController alloc] initWithRootViewController:viewController];
-    });
+    }];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.backgroundColor = [UIColor whiteColor];
