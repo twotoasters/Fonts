@@ -28,7 +28,9 @@
 
     NSArray *viewControllers = @[ fontFamiliesViewController, fontPreviewViewController ];
     splitViewController.viewControllers = [viewControllers twt_collectWithBlock:^id(UIViewController *viewController) {
-        return [[UINavigationController alloc] initWithRootViewController:viewController];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        navigationController.toolbarHidden = NO;
+        return navigationController;
     }];
 
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

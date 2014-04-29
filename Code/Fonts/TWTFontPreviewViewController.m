@@ -14,14 +14,23 @@
 
 
 @interface TWTFontPreviewViewController ()
+
 @property (nonatomic, copy) NSString *fontName;
 @property (nonatomic) CGFloat fontSize;
 
 @property (nonatomic, weak) UILabel *label;
+
+@property (nonatomic, weak) UILabel *fontSizeLabel;
+@property (nonatomic, weak) UILabel *ascenderLabel;
+@property (nonatomic, weak) UILabel *descenderLabel;
+
+@property (nonatomic, strong, readonly) NSNumberFormatter *pointSizeNumberFormatter;
+
 @end
 
 
 @implementation TWTFontPreviewViewController
+@synthesize pointSizeNumberFormatter = _pointSizeNumberFormatter;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +38,21 @@
     if (self) {
         _fontName = @"Helvetica";
         _fontSize = 18.0;
+
+        UIBarButtonItem *fontSizeItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
+        _fontSizeLabel = (UILabel *)fontSizeItem.customView;
+
+        UIBarButtonItem *ascenderItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
+        _ascenderLabel = (UILabel *)ascenderItem.customView;
+
+        UIBarButtonItem *descenderItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
+        _descenderLabel = (UILabel *)descenderItem.customView;
+
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                       target:nil
+                                                                                       action:NULL];
+
+        self.toolbarItems = @[ fontSizeItem, flexibleSpace, ascenderItem, flexibleSpace, descenderItem ];
 
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(fontsViewControllerSelectedFontNameDidChange:)
@@ -68,8 +92,10 @@
     fontSizeSlider.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:fontSizeSlider];
 
-    NSDictionary *views = NSDictionaryOfVariableBindings(label, fontSizeSlider);
-    [self.view twt_addConstraintsWithVisualFormatStrings:@[ @"H:|-[label]-|", @"H:|-[fontSizeSlider]-|", @"V:[fontSizeSlider]-|" ]
+    id bottomLayoutGuide = self.bottomLayoutGuide;
+
+    NSDictionary *views = NSDictionaryOfVariableBindings(label, fontSizeSlider, bottomLayoutGuide);
+    [self.view twt_addConstraintsWithVisualFormatStrings:@[ @"H:|-[label]-|", @"H:|-[fontSizeSlider]-|", @"V:[fontSizeSlider]-[bottomLayoutGuide]" ]
                                                    views:views];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:label
                                                           attribute:NSLayoutAttributeCenterY
@@ -101,6 +127,18 @@
 }
 
 
+- (NSNumberFormatter *)pointSizeNumberFormatter
+{
+    if (!_pointSizeNumberFormatter) {
+        _pointSizeNumberFormatter = [[NSNumberFormatter alloc] init];
+        _pointSizeNumberFormatter.minimumFractionDigits = 0;
+        _pointSizeNumberFormatter.maximumFractionDigits = 6;
+    }
+
+    return _pointSizeNumberFormatter;
+}
+
+
 #pragma mark - Notification Handlers
 
 - (void)fontsViewControllerSelectedFontNameDidChange:(NSNotification *)notification
@@ -121,8 +159,18 @@
 
 - (void)updateFont
 {
-    self.title = [NSString stringWithFormat:@"%.0fpt %@", self.fontSize, self.fontName];
-    self.label.font = [UIFont fontWithName:self.fontName size:self.fontSize];
+    UIFont *font = [UIFont fontWithName:self.fontName size:self.fontSize];
+
+    self.title = self.fontName;
+
+    self.fontSizeLabel.text = [NSString stringWithFormat:@"Size: %@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.pointSize)]];
+    [self.fontSizeLabel sizeToFit];
+    self.ascenderLabel.text = [NSString stringWithFormat:@"Ascender: %@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.ascender)]];
+    [self.ascenderLabel sizeToFit];
+    self.descenderLabel.text = [NSString stringWithFormat:@"Descender: %@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.descender)]];
+    [self.descenderLabel sizeToFit];
+
+    self.label.font = font;
 }
 
 @end
