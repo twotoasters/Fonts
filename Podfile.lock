@@ -1,15 +1,17 @@
 PODS:
   - Smartling.i18n (1.0.3)
-  - TWTToast/Core (0.2)
-  - TWTToast/UIKit/AutoLayout (0.2)
+  - TWTToast/Core (0.7):
+    - TWTToast/Foundation/BlockEnumeration
+  - TWTToast/Foundation/BlockEnumeration (0.7)
+  - TWTToast/UIKit/AutoLayout (0.7)
 
 DEPENDENCIES:
-  - Smartling.i18n (= 1.0.3)
-  - TWTToast/Core (= 0.2)
-  - TWTToast/UIKit/AutoLayout (= 0.2)
+  - Smartling.i18n (~> 1.0.3)
+  - TWTToast/Core (~> 0.7)
+  - TWTToast/UIKit/AutoLayout (~> 0.7)
 
 SPEC CHECKSUMS:
-  Smartling.i18n: ab95f58e4dba9cda78172e53a0d4d86f904655d6
-  TWTToast: a544d7aba1d1dd9ae554b1db0ae8f4ffc27f9bb1
+  Smartling.i18n: c6b23ffa34fda6db6c0cb8c17dccfef062fb4d03
+  TWTToast: e8cf66b80d216ec4402b97a8ebfc5309070e09f9
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.32.1

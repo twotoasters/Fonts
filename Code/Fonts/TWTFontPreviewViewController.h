@@ -10,4 +10,7 @@
 
 
 @interface TWTFontPreviewViewController : UIViewController
+
+@property (nonatomic, copy) NSString *fontName;
+
 @end

@@ -10,18 +10,33 @@
 
 #import <TWTToast/UIView+TWTConvenientConstraintAddition.h>
 
+#import "TWTEnvironment.h"
 #import "TWTFontsViewController.h"
+#import "TWTTextEditorViewController.h"
+#import "TWTUserDefaults.h"
+#import "UIViewController+Fonts.h"
 
 
 @interface TWTFontPreviewViewController ()
-@property (nonatomic, copy) NSString *fontName;
+
 @property (nonatomic) CGFloat fontSize;
 
 @property (nonatomic, weak) UILabel *label;
+
+@property (nonatomic, weak) UILabel *fontSizeLabel;
+@property (nonatomic, weak) UILabel *ascenderLabel;
+@property (nonatomic, weak) UILabel *descenderLabel;
+
+@property (nonatomic, strong, readonly) NSNumberFormatter *pointSizeNumberFormatter;
+
+@property (nonatomic, strong) TWTUserDefaults *userDefaults;
+
 @end
 
 
 @implementation TWTFontPreviewViewController
+@synthesize pointSizeNumberFormatter = _pointSizeNumberFormatter;
+@synthesize userDefaults = _userDefaults;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +44,25 @@
     if (self) {
         _fontName = @"Helvetica";
         _fontSize = 18.0;
+
+        UIBarButtonItem *fontSizeItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
+        _fontSizeLabel = (UILabel *)fontSizeItem.customView;
+
+        UIBarButtonItem *ascenderItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
+        _ascenderLabel = (UILabel *)ascenderItem.customView;
+
+        UIBarButtonItem *descenderItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
+        _descenderLabel = (UILabel *)descenderItem.customView;
+
+        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                                       target:nil
+                                                                                       action:NULL];
+
+        self.toolbarItems = @[ fontSizeItem, flexibleSpace, ascenderItem, flexibleSpace, descenderItem ];
+
+        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                                               target:self
+                                                                                               action:@selector(editButtonTapped)];
 
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(fontsViewControllerSelectedFontNameDidChange:)
@@ -52,7 +86,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
 
     UILabel *label = [[UILabel alloc] init];
-    label.text = @"ABCDEFGHIJKLMNOPQRSTUVWXYZ\nabcdefghijklmnopqrstuvwxyz\n0123456789\n@.,:;%$#!?()'\"‘’“”/\\";
+    label.text = self.userDefaults.previewText;
     label.numberOfLines = 0;
     label.textAlignment = NSTextAlignmentCenter;
     label.translatesAutoresizingMaskIntoConstraints = NO;
@@ -68,8 +102,10 @@
     fontSizeSlider.translatesAutoresizingMaskIntoConstraints = NO;
     [self.view addSubview:fontSizeSlider];
 
-    NSDictionary *views = NSDictionaryOfVariableBindings(label, fontSizeSlider);
-    [self.view twt_addConstraintsWithVisualFormatStrings:@[ @"H:|-[label]-|", @"H:|-[fontSizeSlider]-|", @"V:[fontSizeSlider]-|" ]
+    id bottomLayoutGuide = self.bottomLayoutGuide;
+
+    NSDictionary *views = NSDictionaryOfVariableBindings(label, fontSizeSlider, bottomLayoutGuide);
+    [self.view twt_addConstraintsWithVisualFormatStrings:@[ @"H:|-[label]-|", @"H:|-[fontSizeSlider]-|", @"V:[fontSizeSlider]-[bottomLayoutGuide]" ]
                                                    views:views];
     [self.view addConstraint:[NSLayoutConstraint constraintWithItem:label
                                                           attribute:NSLayoutAttributeCenterY
@@ -101,6 +137,27 @@
 }
 
 
+- (NSNumberFormatter *)pointSizeNumberFormatter
+{
+    if (!_pointSizeNumberFormatter) {
+        _pointSizeNumberFormatter = [[NSNumberFormatter alloc] init];
+        _pointSizeNumberFormatter.minimumFractionDigits = 0;
+        _pointSizeNumberFormatter.maximumFractionDigits = 6;
+    }
+
+    return _pointSizeNumberFormatter;
+}
+
+
+- (TWTUserDefaults *)userDefaults
+{
+    if (!_userDefaults) {
+        _userDefaults = [[TWTUserDefaults alloc] init];
+    }
+    return _userDefaults;
+}
+
+
 #pragma mark - Notification Handlers
 
 - (void)fontsViewControllerSelectedFontNameDidChange:(NSNotification *)notification
@@ -117,12 +174,46 @@
 }
 
 
+- (void)editButtonTapped
+{
+    TWTTextEditorViewController *viewController = [[TWTTextEditorViewController alloc] init];
+    viewController.title = NSLocalizedString(@"Edit Preview", nil);
+    viewController.text = self.label.text;
+    __weak typeof(viewController) weakViewController = viewController;
+    viewController.twt_completion = ^(BOOL finished) {
+        if (finished) {
+            self.label.text = weakViewController.text;
+            self.userDefaults.previewText = weakViewController.text;
+        }
+        [self dismissViewControllerAnimated:YES completion:nil];
+    };
+
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+
+    if (TWTUserInterfaceIdiomIsPad()) {
+        navigationController.modalPresentationStyle = UIModalPresentationFormSheet;
+    }
+
+    [self presentViewController:navigationController animated:YES completion:nil];
+}
+
+
 #pragma mark - Helpers
 
 - (void)updateFont
 {
-    self.title = [NSString stringWithFormat:@"%.0fpt %@", self.fontSize, self.fontName];
-    self.label.font = [UIFont fontWithName:self.fontName size:self.fontSize];
+    UIFont *font = [UIFont fontWithName:self.fontName size:self.fontSize];
+
+    self.title = self.fontName;
+
+    self.fontSizeLabel.text = [NSString stringWithFormat:@"%@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.pointSize)]];
+    [self.fontSizeLabel sizeToFit];
+    self.ascenderLabel.text = [NSString stringWithFormat:@"↑ %@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.ascender)]];
+    [self.ascenderLabel sizeToFit];
+    self.descenderLabel.text = [NSString stringWithFormat:@"↓ %@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.descender)]];
+    [self.descenderLabel sizeToFit];
+
+    self.label.font = font;
 }
 
 @end

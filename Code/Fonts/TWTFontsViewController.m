@@ -8,7 +8,9 @@
 
 #import "TWTFontsViewController.h"
 
+#import "TWTEnvironment.h"
 #import "TWTFontLoader.h"
+#import "TWTFontPreviewViewController.h"
 
 
 NSString *const kTWTFontsViewControllerSelectedFontNameDidChangeNotification = @"TWTFontsViewControllerSelectedFontNameDidChange";
@@ -72,7 +74,7 @@ static NSString *const kCellIdentifier = @"font cell";
 
 - (void)setSelectedFontName:(NSString *)selectedFontName
 {
-    if (self.isViewLoaded) {
+    if (TWTUserInterfaceIdiomIsPad() && self.isViewLoaded) {
         NSInteger index = (NSInteger)[self.fontNames indexOfObject:_selectedFontName];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
         cell.accessoryType = UITableViewCellAccessoryNone;
@@ -80,7 +82,7 @@ static NSString *const kCellIdentifier = @"font cell";
 
     _selectedFontName = [selectedFontName copy];
 
-    if (self.isViewLoaded) {
+    if (TWTUserInterfaceIdiomIsPad() && self.isViewLoaded) {
         NSInteger index = (NSInteger)[self.fontNames indexOfObject:_selectedFontName];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
@@ -116,9 +118,15 @@ static NSString *const kCellIdentifier = @"font cell";
     NSString *fontName = self.fontNames[indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
     cell.textLabel.text = fontName;
-    cell.accessoryType = (  [fontName isEqualToString:self.selectedFontName]
-                          ? UITableViewCellAccessoryCheckmark
-                          : UITableViewCellAccessoryNone );
+    if (TWTUserInterfaceIdiomIsPad()) {
+        cell.accessoryType = (  [fontName isEqualToString:self.selectedFontName]
+                              ? UITableViewCellAccessoryCheckmark
+                              : UITableViewCellAccessoryNone );
+    }
+    else {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+
     return cell;
 }
 
@@ -129,7 +137,14 @@ static NSString *const kCellIdentifier = @"font cell";
 {
     self.selectedFontName = self.fontNames[indexPath.row];
 
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (TWTUserInterfaceIdiomIsPad()) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    else {
+        TWTFontPreviewViewController *fontPreviewViewController = [[TWTFontPreviewViewController alloc] init];
+        fontPreviewViewController.fontName = self.selectedFontName;
+        [self.navigationController pushViewController:fontPreviewViewController animated:YES];
+    }
 }
 
 @end
