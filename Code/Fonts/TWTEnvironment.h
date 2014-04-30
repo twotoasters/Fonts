@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Two Toasters, LLC. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+@import Foundation;
 
 
 BOOL TWTUserInterfaceIdiomIsPad(void);
