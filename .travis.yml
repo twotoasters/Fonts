@@ -22,7 +22,7 @@ env:
     - TWT_SHOULD_DISTRIBUTE=$([ "$TRAVIS_BRANCH" = 'master' ] && [ "$TRAVIS_PULL_REQUEST" = 'false' ]; echo $?)
 
     # TWT_DROPBOX_DISTRIBUTION_DEPENDENCIES_URL
-    - secure: "ezYaYyovtdPC3ViIk3+NsKHJqFTY+QuzMIKg/40UX6KiQ/47Tz+Eqi+NEQexZwxtMhV3zHXq1TpZsK6MK9FhAIB1N/VRa/m333gFbv6bAjfNXGsRdPcoNKiGW2ELSGsMwxnSG40ETLmVOvbitPC5aI1E1gX/t1noCdI7cUiaxKI="
+    - secure: "BNkb6wK6shSLRxOEf3SeOPhLdyq71JMnFSQlvPPpLf2xmKDUW819NutDVUMnYg+JEp1bEfB5jp3Kur9PKaPwIcsqWkdfMvjOfvZ8Bz0QtlYrV4gzHXjorQhBNGk7EDdMZq7z1swcYvef4ek5sgmnz7W2SNxhKTqF74PVT9GVbv8="
 
     # TWT_CODESIGNING_KEY_PASSWORD
     # Important: http://docs.travis-ci.com/user/encryption-keys/#Note-on-escaping-certain-symbols
