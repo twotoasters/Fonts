@@ -6,7 +6,7 @@
 brew upgrade xctool
 
 # update CocoaPods
-gem update cocoapods
+gem update cocoapods --no-ri --no-rdoc
 
 # install gems
 bundle install
