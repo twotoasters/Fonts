@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [TWTFontLoader loadFonts];
+    [[TWTFontLoader sharedInstance] loadFonts];
 
     TWTFontFamiliesViewController *fontFamiliesViewController = [[TWTFontFamiliesViewController alloc] init];
 
@@ -54,7 +54,7 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    return [TWTFontLoader openFontWithURL:url];
+    return [[TWTFontLoader sharedInstance] openFontWithURL:url];
 }
 
 @end

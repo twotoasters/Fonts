@@ -16,7 +16,11 @@ static NSString *const kCellIdentifier = @"family cell";
 
 
 @interface TWTFontFamiliesViewController ()
+
 @property (nonatomic, copy) NSArray *familyNames;
+
+@property (nonatomic, weak) UILabel *webServerURLLabel;
+
 @end
 
 
@@ -29,10 +33,26 @@ static NSString *const kCellIdentifier = @"family cell";
         _familyNames = [[UIFont familyNames] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
         self.title = NSLocalizedString(@"Fonts", nil);
 
+        UIBarButtonItem *webServerURLItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
+        _webServerURLLabel = (UILabel *)webServerURLItem.customView;
+        [self updateWebServerURLLabel];
+
+        self.toolbarItems = @[ webServerURLItem ];
+
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(fontLoaderDidOpenFont:)
-                                                     name:kTWTFontLoaderDidOpenFontNotification
-                                                   object:[TWTFontLoader class]];
+                                                 selector:@selector(fontLoaderDidChangeFonts:)
+                                                     name:kTWTFontLoaderDidChangeFontsNotification
+                                                   object:[TWTFontLoader sharedInstance]];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(fontLoaderDidStartWebServer:)
+                                                     name:kTWTFontLoaderDidStartWebServerNotification
+                                                   object:[TWTFontLoader sharedInstance]];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(fontLoaderDidStopWebServer:)
+                                                     name:kTWTFontLoaderDidStopWebServerNotification
+                                                   object:[TWTFontLoader sharedInstance]];
     }
     return self;
 }
@@ -51,14 +71,34 @@ static NSString *const kCellIdentifier = @"family cell";
 }
 
 
+- (void)updateWebServerURLLabel
+{
+    NSString *urlString = [[[TWTFontLoader sharedInstance] webServerURL] absoluteString];
+    self.webServerURLLabel.text = urlString ?: nil;
+    [self.webServerURLLabel sizeToFit];
+}
+
+
 #pragma mark - Notification Handlers
 
-- (void)fontLoaderDidOpenFont:(NSNotification *)notification
+- (void)fontLoaderDidChangeFonts:(NSNotification *)notification
 {
     self.familyNames = [[UIFont familyNames] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     if (self.isViewLoaded) {
         [self.tableView reloadData];
     }
+}
+
+
+- (void)fontLoaderDidStartWebServer:(NSNotification *)notification
+{
+    [self updateWebServerURLLabel];
+}
+
+
+- (void)fontLoaderDidStopWebServer:(NSNotification *)notification
+{
+    [self updateWebServerURLLabel];
 }
 
 

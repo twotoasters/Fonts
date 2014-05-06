@@ -17,6 +17,9 @@
 #import "UIViewController+Fonts.h"
 
 
+static NSString *const kDefaultFontName = @"Helvetica";
+
+
 @interface TWTFontPreviewViewController ()
 
 @property (nonatomic) CGFloat fontSize;
@@ -42,7 +45,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _fontName = @"Helvetica";
         _fontSize = 18.0;
 
         UIBarButtonItem *fontSizeItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
@@ -202,9 +204,9 @@
 
 - (void)updateFont
 {
-    UIFont *font = [UIFont fontWithName:self.fontName size:self.fontSize];
+    UIFont *font = [UIFont fontWithName:self.fontName ?: kDefaultFontName size:self.fontSize];
 
-    self.title = self.fontName;
+    self.title = font.fontName;
 
     self.fontSizeLabel.text = [NSString stringWithFormat:@"%@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.pointSize)]];
     [self.fontSizeLabel sizeToFit];

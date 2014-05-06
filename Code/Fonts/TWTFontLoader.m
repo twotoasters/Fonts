@@ -10,13 +10,51 @@
 
 @import CoreText;
 
+#import "TWTWebUploader.h"
 
-NSString *const kTWTFontLoaderDidOpenFontNotification = @"TWTFontLoaderDidOpenFont";
+#import "TWTEnvironment.h"
+
+
+NSString *const kTWTFontLoaderDidStartWebServerNotification = @"TWTFontLoaderDidStartWebServer";
+NSString *const kTWTFontLoaderDidStopWebServerNotification = @"TWTFontLoaderDidStopWebServer";
+NSString *const kTWTFontLoaderDidChangeFontsNotification = @"TWTFontLoaderDidChangeFonts";
+
+
+@interface TWTFontLoader () <GCDWebUploaderDelegate>
+
+@property (nonatomic, strong) TWTWebUploader *webServer;
+
+@end
 
 
 @implementation TWTFontLoader
 
-+ (void)loadFonts
++ (instancetype)sharedInstance
+{
+    static TWTFontLoader *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[TWTFontLoader alloc] init];
+    });
+    return sharedInstance;
+}
+
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        NSString *uploadPath = [[self fontsDirectoryURL] path];
+        _webServer = [[TWTWebUploader alloc] initWithUploadDirectory:uploadPath];
+        _webServer.allowedFileExtensions = @[ @"ttf", @"otf" ];
+        _webServer.delegate = self;
+        [_webServer start];
+    }
+    return self;
+}
+
+
+- (void)loadFonts
 {
     NSFileManager *fileManager = [[NSFileManager alloc] init];
 
@@ -32,9 +70,14 @@ NSString *const kTWTFontLoaderDidOpenFontNotification = @"TWTFontLoaderDidOpenFo
 }
 
 
-+ (BOOL)openFontWithURL:(NSURL *)url
+- (BOOL)openFontWithURL:(NSURL *)url
 {
     if (!url.isFileURL) {
+        return NO;
+    }
+
+    if (![self.webServer.allowedFileExtensions containsObject:url.pathExtension]) {
+        NSLog(@"Skipping non-font file: %@", url);
         return NO;
     }
 
@@ -49,28 +92,47 @@ NSString *const kTWTFontLoaderDidOpenFontNotification = @"TWTFontLoaderDidOpenFo
         return NO;
     }
 
-    BOOL loadSuccess = [self loadFontWithURL:toURL];
-
-    if (!loadSuccess) {
-        error = nil;
-        [fileManager removeItemAtURL:toURL error:&error];
-        return NO;
-    }
-
-    [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontLoaderDidOpenFontNotification object:self userInfo:nil];
-
-    return YES;
+    return [self loadFontWithURL:toURL];
 }
 
 
-+ (BOOL)loadFontWithURL:(NSURL *)url
+- (BOOL)loadFontWithURL:(NSURL *)url
 {
+    NSLog(@"%s url: %@", __PRETTY_FUNCTION__, url);
+
     CFErrorRef error = nil;
     bool success = CTFontManagerRegisterFontsForURL((CFURLRef)url, kCTFontManagerScopeProcess, &error);
 
-    if (!success) {
+    if (success) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontLoaderDidChangeFontsNotification object:self userInfo:nil];
+    }
+    else {
         CFStringRef errorDescription = CFErrorCopyDescription(error);
         NSLog(@"Failed to register font: %@", errorDescription);
+        CFRelease(errorDescription);
+
+        NSError *error = nil;
+        NSFileManager *fileManager = [[NSFileManager alloc] init];
+        [fileManager removeItemAtURL:url error:&error];
+    }
+
+    return success;
+}
+
+
+- (BOOL)unloadFontWithURL:(NSURL *)url
+{
+    NSLog(@"%s url: %@", __PRETTY_FUNCTION__, url);
+
+    CFErrorRef error = nil;
+    bool success = CTFontManagerUnregisterFontsForURL((CFURLRef)url, kCTFontManagerScopeProcess, &error);
+
+    if (success) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontLoaderDidChangeFontsNotification object:self userInfo:nil];
+    }
+    else {
+        CFStringRef errorDescription = CFErrorCopyDescription(error);
+        NSLog(@"Failed to unregister font: %@", errorDescription);
         CFRelease(errorDescription);
     }
 
@@ -78,10 +140,9 @@ NSString *const kTWTFontLoaderDidOpenFontNotification = @"TWTFontLoaderDidOpenFo
 }
 
 
-+ (NSURL *)fontsDirectoryURL
+- (NSURL *)fontsDirectoryURL
 {
-    NSURL *documentsDirectoryURL = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
-    NSURL *fontsDirectoryURL = [documentsDirectoryURL URLByAppendingPathComponent:@"Fonts" isDirectory:YES];
+    NSURL *fontsDirectoryURL = [TWTDocumentsDirectoryURL() URLByAppendingPathComponent:@"Fonts" isDirectory:YES];
 
     NSFileManager *fileManager = [[NSFileManager alloc] init];
     NSError *error = nil;
@@ -89,6 +150,39 @@ NSString *const kTWTFontLoaderDidOpenFontNotification = @"TWTFontLoaderDidOpenFo
     NSAssert(success, @"Failed to create directory: %@ %@", fontsDirectoryURL, error);
 
     return fontsDirectoryURL;
+}
+
+
+- (NSURL *)webServerURL
+{
+    return self.webServer.serverURL;
+}
+
+
+#pragma mark - GCDWebUploaderDelegate
+
+- (void)webUploader:(GCDWebUploader *)uploader didUploadFileAtPath:(NSString *)path
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSURL *url = [NSURL fileURLWithPath:path];
+        [self loadFontWithURL:url];
+    });
+}
+
+
+- (void)webServerDidStart:(GCDWebServer *)server
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontLoaderDidStartWebServerNotification object:self userInfo:nil];
+    });
+}
+
+
+- (void)webServerDidStop:(GCDWebServer *)server;
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontLoaderDidStopWebServerNotification object:self userInfo:nil];
+    });
 }
 
 @end

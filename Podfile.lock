@@ -1,4 +1,7 @@
 PODS:
+  - GCDWebServer/Core (2.4)
+  - GCDWebServer/WebUploader (2.4):
+    - GCDWebServer/Core
   - Smartling.i18n (1.0.3)
   - TWTToast/Core (0.7):
     - TWTToast/Foundation/BlockEnumeration
@@ -6,11 +9,13 @@ PODS:
   - TWTToast/UIKit/AutoLayout (0.7)
 
 DEPENDENCIES:
+  - GCDWebServer/WebUploader (~> 2.0)
   - Smartling.i18n (~> 1.0.3)
   - TWTToast/Core (~> 0.7)
   - TWTToast/UIKit/AutoLayout (~> 0.7)
 
 SPEC CHECKSUMS:
+  GCDWebServer: fb6eba9a0fb08455cd762b6c035a5068b8f4960b
   Smartling.i18n: c6b23ffa34fda6db6c0cb8c17dccfef062fb4d03
   TWTToast: e8cf66b80d216ec4402b97a8ebfc5309070e09f9
 
