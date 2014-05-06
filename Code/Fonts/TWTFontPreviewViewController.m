@@ -11,6 +11,7 @@
 #import <TWTToast/UIView+TWTConvenientConstraintAddition.h>
 
 #import "TWTEnvironment.h"
+#import "TWTFontMetricView.h"
 #import "TWTFontsViewController.h"
 #import "TWTTextEditorViewController.h"
 #import "TWTUserDefaults.h"
@@ -26,13 +27,15 @@ static NSString *const kDefaultFontName = @"Helvetica";
 
 @property (nonatomic, weak) UILabel *label;
 
-@property (nonatomic, weak) UILabel *fontSizeLabel;
-@property (nonatomic, weak) UILabel *ascenderLabel;
-@property (nonatomic, weak) UILabel *descenderLabel;
+@property (nonatomic, copy) NSArray *metricViews;
 
 @property (nonatomic, strong, readonly) NSNumberFormatter *pointSizeNumberFormatter;
 
 @property (nonatomic, strong) TWTUserDefaults *userDefaults;
+
+@property (nonatomic, weak) UIScrollView *scrollView;
+
+@property (nonatomic, weak) UISlider *fontSizeSlider;
 
 @end
 
@@ -47,20 +50,17 @@ static NSString *const kDefaultFontName = @"Helvetica";
     if (self) {
         _fontSize = 18.0;
 
-        UIBarButtonItem *fontSizeItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
-        _fontSizeLabel = (UILabel *)fontSizeItem.customView;
+        UISlider *slider = [[UISlider alloc] init];
+        slider.minimumValue = 8.0;
+        slider.maximumValue = 72.0;
+        slider.value = self.fontSize;
+        slider.continuous = YES;
+        [slider addTarget:self action:@selector(fontSizeSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+        UIBarButtonItem *sliderItem = [[UIBarButtonItem alloc] initWithCustomView:slider];
+        self.toolbarItems = @[ sliderItem ];
+        _fontSizeSlider = slider;
 
-        UIBarButtonItem *ascenderItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
-        _ascenderLabel = (UILabel *)ascenderItem.customView;
-
-        UIBarButtonItem *descenderItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
-        _descenderLabel = (UILabel *)descenderItem.customView;
-
-        UIBarButtonItem *flexibleSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                                       target:nil
-                                                                                       action:NULL];
-
-        self.toolbarItems = @[ fontSizeItem, flexibleSpace, ascenderItem, flexibleSpace, descenderItem ];
+        self.hidesBottomBarWhenPushed = NO;
 
         self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                                target:self
@@ -87,37 +87,131 @@ static NSString *const kDefaultFontName = @"Helvetica";
 
     self.view.backgroundColor = [UIColor whiteColor];
 
+    UIScrollView *scrollView = [[UIScrollView alloc] init];
+    scrollView.translatesAutoresizingMaskIntoConstraints = NO;
+    scrollView.alwaysBounceVertical = YES;
+    [self.view addSubview:scrollView];
+    self.scrollView = scrollView;
+
+    UIView *contentView = [[UIView alloc] init];
+    contentView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.scrollView addSubview:contentView];
+
+    TWTFontMetricView *sizeMetricView = [[TWTFontMetricView alloc] init];
+    sizeMetricView.metricName = NSLocalizedString(@"Point size", nil);
+    sizeMetricView.metricValueBlock = ^(UIFont *font) {
+        return [NSString stringWithFormat:@"%@ pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.pointSize)]];
+    };
+
+    TWTFontMetricView *ascenderMetricView = [[TWTFontMetricView alloc] init];
+    ascenderMetricView.metricName = NSLocalizedString(@"Ascender", nil);
+    ascenderMetricView.metricValueBlock = ^(UIFont *font) {
+        return [NSString stringWithFormat:@"%@ pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.ascender)]];
+    };
+
+    TWTFontMetricView *descenderMetricView = [[TWTFontMetricView alloc] init];
+    descenderMetricView.metricName = NSLocalizedString(@"Descender", nil);
+    descenderMetricView.metricValueBlock = ^(UIFont *font) {
+        return [NSString stringWithFormat:@"%@ pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.descender)]];
+    };
+
+    TWTFontMetricView *lineHeightMultiplierMetricView = [[TWTFontMetricView alloc] init];
+    lineHeightMultiplierMetricView.metricName = NSLocalizedString(@"Line height multiplier", nil);
+    lineHeightMultiplierMetricView.metricValueBlock = ^(UIFont *font) {
+        return [NSString stringWithFormat:@"%@", [self.pointSizeNumberFormatter stringFromNumber:@(font.pointSize / (font.ascender + font.descender))]];
+    };
+
+    TWTFontMetricView *ascenderRatioMetricView = [[TWTFontMetricView alloc] init];
+    ascenderRatioMetricView.metricName = NSLocalizedString(@"Ascender / point size", nil);
+    ascenderRatioMetricView.metricValueBlock = ^(UIFont *font) {
+        return [NSString stringWithFormat:@"%@", [self.pointSizeNumberFormatter stringFromNumber:@(font.ascender / font.pointSize)]];
+    };
+
+    TWTFontMetricView *descenderRatioMetricView = [[TWTFontMetricView alloc] init];
+    descenderRatioMetricView.metricName = NSLocalizedString(@"Descender / point size", nil);
+    descenderRatioMetricView.metricValueBlock = ^(UIFont *font) {
+        return [NSString stringWithFormat:@"%@", [self.pointSizeNumberFormatter stringFromNumber:@(font.descender / font.pointSize)]];
+    };
+
+    self.metricViews = @[ sizeMetricView, ascenderMetricView, descenderMetricView, lineHeightMultiplierMetricView, ascenderRatioMetricView, descenderRatioMetricView ];
+
+    for (TWTFontMetricView *metricView in self.metricViews) {
+        metricView.translatesAutoresizingMaskIntoConstraints = NO;
+        [contentView addSubview:metricView];
+    }
+
+    NSInteger index = 0;
+    for (TWTFontMetricView *metricView in self.metricViews.reverseObjectEnumerator) {
+        metricView.backgroundColor = (index % 2) == 0 ? [UIColor colorWithWhite:0.9 alpha:1.0] : [UIColor whiteColor];
+        index++;
+    }
+
     UILabel *label = [[UILabel alloc] init];
     label.text = self.userDefaults.previewText;
     label.numberOfLines = 0;
     label.textAlignment = NSTextAlignmentCenter;
     label.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:label];
+    [contentView addSubview:label];
     self.label = label;
 
-    UISlider *fontSizeSlider = [[UISlider alloc] init];
-    fontSizeSlider.minimumValue = 8.0;
-    fontSizeSlider.maximumValue = 72.0;
-    fontSizeSlider.value = self.fontSize;
-    fontSizeSlider.continuous = YES;
-    [fontSizeSlider addTarget:self action:@selector(fontSizeSliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-    fontSizeSlider.translatesAutoresizingMaskIntoConstraints = NO;
-    [self.view addSubview:fontSizeSlider];
-
-    id bottomLayoutGuide = self.bottomLayoutGuide;
-
-    NSDictionary *views = NSDictionaryOfVariableBindings(label, fontSizeSlider, bottomLayoutGuide);
-    [self.view twt_addConstraintsWithVisualFormatStrings:@[ @"H:|-[label]-|", @"H:|-[fontSizeSlider]-|", @"V:[fontSizeSlider]-[bottomLayoutGuide]" ]
+    NSDictionary *views = NSDictionaryOfVariableBindings(scrollView);
+    [self.view twt_addConstraintsWithVisualFormatStrings:@[ @"H:|[scrollView]|",
+                                                            @"V:|[scrollView]|" ]
                                                    views:views];
-    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:label
-                                                          attribute:NSLayoutAttributeCenterY
+
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:contentView
+                                                          attribute:NSLayoutAttributeWidth
                                                           relatedBy:NSLayoutRelationEqual
                                                              toItem:self.view
-                                                          attribute:NSLayoutAttributeCenterY
+                                                          attribute:NSLayoutAttributeWidth
                                                          multiplier:1.0
                                                            constant:0.0]];
 
+    views = NSDictionaryOfVariableBindings(contentView);
+    [scrollView twt_addConstraintsWithVisualFormatStrings:@[ @"H:|[contentView]|",
+                                                             @"V:|[contentView]|" ]
+                                                    views:views];
+
+    UIView *previousView = contentView;
+    NSLayoutAttribute attribute = NSLayoutAttributeTop;
+    for (UIView *metricView in self.metricViews) {
+        views = NSDictionaryOfVariableBindings(metricView);
+        [contentView twt_addConstraintsWithVisualFormatStrings:@[ @"H:|[metricView]|" ]
+                                                         views:views];
+        [contentView addConstraint:[NSLayoutConstraint constraintWithItem:metricView
+                                                                attribute:NSLayoutAttributeTop
+                                                                relatedBy:NSLayoutRelationEqual
+                                                                   toItem:previousView
+                                                                attribute:attribute
+                                                               multiplier:1.0
+                                                                 constant:0.0]];
+        previousView = metricView;
+        attribute = NSLayoutAttributeBottom;
+    }
+
+    views = NSDictionaryOfVariableBindings(label);
+    [contentView twt_addConstraintsWithVisualFormatStrings:@[ @"H:|-15-[label]-15-|", @"V:[label]-|" ]
+                                                     views:views];
+
+    [contentView addConstraint:[NSLayoutConstraint constraintWithItem:label
+                                                            attribute:NSLayoutAttributeTop
+                                                            relatedBy:NSLayoutRelationEqual
+                                                               toItem:previousView
+                                                            attribute:attribute
+                                                           multiplier:1.0
+                                                             constant:20.0]];
+
     [self updateFont];
+}
+
+
+- (void)viewDidLayoutSubviews
+{
+    [super viewDidLayoutSubviews];
+
+    CGRect frame = self.fontSizeSlider.frame;
+    frame.size.width = CGRectGetWidth(self.view.bounds) - 30.0;
+    self.fontSizeSlider.frame = frame;
 }
 
 
@@ -144,7 +238,7 @@ static NSString *const kDefaultFontName = @"Helvetica";
     if (!_pointSizeNumberFormatter) {
         _pointSizeNumberFormatter = [[NSNumberFormatter alloc] init];
         _pointSizeNumberFormatter.minimumFractionDigits = 0;
-        _pointSizeNumberFormatter.maximumFractionDigits = 6;
+        _pointSizeNumberFormatter.maximumFractionDigits = 2;
     }
 
     return _pointSizeNumberFormatter;
@@ -213,15 +307,11 @@ static NSString *const kDefaultFontName = @"Helvetica";
     UIFont *font = [UIFont fontWithName:self.fontName ?: kDefaultFontName size:self.fontSize];
 
     self.title = font.fontName;
-
-    self.fontSizeLabel.text = [NSString stringWithFormat:@"%@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.pointSize)]];
-    [self.fontSizeLabel sizeToFit];
-    self.ascenderLabel.text = [NSString stringWithFormat:@"↑ %@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.ascender)]];
-    [self.ascenderLabel sizeToFit];
-    self.descenderLabel.text = [NSString stringWithFormat:@"↓ %@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.descender)]];
-    [self.descenderLabel sizeToFit];
-
     self.label.font = font;
+
+    for (TWTFontMetricView *metricView in self.metricViews) {
+        metricView.font = font;
+    }
 }
 
 @end
