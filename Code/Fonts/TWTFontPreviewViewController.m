@@ -181,14 +181,6 @@ static NSString *const kDefaultFontName = @"Helvetica";
     TWTTextEditorViewController *viewController = [[TWTTextEditorViewController alloc] init];
     viewController.title = NSLocalizedString(@"Edit Preview", nil);
     viewController.text = self.label.text;
-    __weak typeof(viewController) weakViewController = viewController;
-    viewController.twt_completion = ^(BOOL finished) {
-        if (finished) {
-            self.label.text = weakViewController.text;
-            self.userDefaults.previewText = weakViewController.text;
-        }
-        [self dismissViewControllerAnimated:YES completion:nil];
-    };
 
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
 
@@ -197,6 +189,20 @@ static NSString *const kDefaultFontName = @"Helvetica";
     }
 
     [self presentViewController:navigationController animated:YES completion:nil];
+
+    // It is possible for self to be popped off the navigation stack if all fonts
+    // in the current family are deleted. Keeping a strong reference directly to
+    // the presenting view controller allows the dismiss to work anyway.
+    UIViewController *presentingViewController = viewController.presentingViewController;
+
+    __weak typeof(viewController) weakViewController = viewController;
+    viewController.twt_completion = ^(BOOL finished) {
+        if (finished) {
+            self.label.text = weakViewController.text;
+            self.userDefaults.previewText = weakViewController.text;
+        }
+        [presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    };
 }
 
 
