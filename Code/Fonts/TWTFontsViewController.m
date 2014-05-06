@@ -21,8 +21,13 @@ static NSString *const kCellIdentifier = @"font cell";
 
 
 @interface TWTFontsViewController ()
+
 @property (nonatomic, copy) NSArray *fontNames;
+
 @property (nonatomic, copy) NSString *selectedFontName;
+
+@property (nonatomic, weak) UILabel *webServerURLLabel;
+
 @end
 
 
@@ -32,10 +37,27 @@ static NSString *const kCellIdentifier = @"font cell";
 {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
+
+        UIBarButtonItem *webServerURLItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
+        _webServerURLLabel = (UILabel *)webServerURLItem.customView;
+        [self updateWebServerURLLabel];
+
+        self.toolbarItems = @[ webServerURLItem ];
+
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(fontLoaderDidOpenFont:)
-                                                     name:kTWTFontLoaderDidOpenFontNotification
-                                                   object:[TWTFontLoader class]];
+                                                 selector:@selector(fontLoaderDidChangeFonts:)
+                                                     name:kTWTFontLoaderDidChangeFontsNotification
+                                                   object:[TWTFontLoader sharedInstance]];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(fontLoaderDidStartWebServer:)
+                                                     name:kTWTFontLoaderDidStartWebServerNotification
+                                                   object:[TWTFontLoader sharedInstance]];
+
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(fontLoaderDidStopWebServer:)
+                                                     name:kTWTFontLoaderDidStopWebServerNotification
+                                                   object:[TWTFontLoader sharedInstance]];
     }
     return self;
 }
@@ -52,6 +74,14 @@ static NSString *const kCellIdentifier = @"font cell";
     [super viewDidLoad];
 
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:kCellIdentifier];
+}
+
+
+- (void)updateWebServerURLLabel
+{
+    NSString *urlString = [[[TWTFontLoader sharedInstance] webServerURL] absoluteString];
+    self.webServerURLLabel.text = urlString ?: nil;
+    [self.webServerURLLabel sizeToFit];
 }
 
 
@@ -72,36 +102,73 @@ static NSString *const kCellIdentifier = @"font cell";
 }
 
 
+- (void)setFontNames:(NSArray *)fontNames
+{
+    _fontNames = [fontNames copy];
+
+    if (![_fontNames containsObject:self.selectedFontName]) {
+        self.selectedFontName = [_fontNames firstObject];
+    }
+}
+
+
 - (void)setSelectedFontName:(NSString *)selectedFontName
 {
     if (TWTUserInterfaceIdiomIsPad() && self.isViewLoaded) {
         NSInteger index = (NSInteger)[self.fontNames indexOfObject:_selectedFontName];
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-        cell.accessoryType = UITableViewCellAccessoryNone;
+
+        if (index != NSNotFound) {
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+            cell.accessoryType = UITableViewCellAccessoryNone;
+        }
     }
 
     _selectedFontName = [selectedFontName copy];
 
     if (TWTUserInterfaceIdiomIsPad() && self.isViewLoaded) {
         NSInteger index = (NSInteger)[self.fontNames indexOfObject:_selectedFontName];
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+
+        if (index != NSNotFound) {
+            UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForItem:index inSection:0]];
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
     }
 
+    NSDictionary *userInfo = nil;
+    if (_selectedFontName) {
+        userInfo = @{ kTWTFontsViewControllerSelectedFontNameKey : _selectedFontName };
+    }
     [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontsViewControllerSelectedFontNameDidChangeNotification
                                                         object:self
-                                                      userInfo:@{ kTWTFontsViewControllerSelectedFontNameKey : _selectedFontName }];
+                                                      userInfo:userInfo];
 }
 
 
 #pragma mark - Notification Handlers
 
-- (void)fontLoaderDidOpenFont:(NSNotification *)notification
+- (void)fontLoaderDidChangeFonts:(NSNotification *)notification
 {
     self.fontNames = [[UIFont fontNamesForFamilyName:self.familyName] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+
+    if (self.fontNames.count == 0) {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
+
     if (self.isViewLoaded) {
         [self.tableView reloadData];
     }
+}
+
+
+- (void)fontLoaderDidStartWebServer:(NSNotification *)notification
+{
+    [self updateWebServerURLLabel];
+}
+
+
+- (void)fontLoaderDidStopWebServer:(NSNotification *)notification
+{
+    [self updateWebServerURLLabel];
 }
 
 

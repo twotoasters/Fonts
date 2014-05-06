@@ -18,3 +18,8 @@ BOOL TWTUserInterfaceIdiomIsPad(void)
     });
     return isPad;
 }
+
+NSURL *TWTDocumentsDirectoryURL(void)
+{
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] firstObject];
+}

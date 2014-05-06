@@ -10,3 +10,5 @@
 
 
 BOOL TWTUserInterfaceIdiomIsPad(void);
+
+NSURL *TWTDocumentsDirectoryURL(void);

@@ -17,6 +17,9 @@
 #import "UIViewController+Fonts.h"
 
 
+static NSString *const kDefaultFontName = @"Helvetica";
+
+
 @interface TWTFontPreviewViewController ()
 
 @property (nonatomic) CGFloat fontSize;
@@ -42,7 +45,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        _fontName = @"Helvetica";
         _fontSize = 18.0;
 
         UIBarButtonItem *fontSizeItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
@@ -179,14 +181,6 @@
     TWTTextEditorViewController *viewController = [[TWTTextEditorViewController alloc] init];
     viewController.title = NSLocalizedString(@"Edit Preview", nil);
     viewController.text = self.label.text;
-    __weak typeof(viewController) weakViewController = viewController;
-    viewController.twt_completion = ^(BOOL finished) {
-        if (finished) {
-            self.label.text = weakViewController.text;
-            self.userDefaults.previewText = weakViewController.text;
-        }
-        [self dismissViewControllerAnimated:YES completion:nil];
-    };
 
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
 
@@ -195,6 +189,20 @@
     }
 
     [self presentViewController:navigationController animated:YES completion:nil];
+
+    // It is possible for self to be popped off the navigation stack if all fonts
+    // in the current family are deleted. Keeping a strong reference directly to
+    // the presenting view controller allows the dismiss to work anyway.
+    UIViewController *presentingViewController = viewController.presentingViewController;
+
+    __weak typeof(viewController) weakViewController = viewController;
+    viewController.twt_completion = ^(BOOL finished) {
+        if (finished) {
+            self.label.text = weakViewController.text;
+            self.userDefaults.previewText = weakViewController.text;
+        }
+        [presentingViewController dismissViewControllerAnimated:YES completion:nil];
+    };
 }
 
 
@@ -202,9 +210,9 @@
 
 - (void)updateFont
 {
-    UIFont *font = [UIFont fontWithName:self.fontName size:self.fontSize];
+    UIFont *font = [UIFont fontWithName:self.fontName ?: kDefaultFontName size:self.fontSize];
 
-    self.title = self.fontName;
+    self.title = font.fontName;
 
     self.fontSizeLabel.text = [NSString stringWithFormat:@"%@pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.pointSize)]];
     [self.fontSizeLabel sizeToFit];

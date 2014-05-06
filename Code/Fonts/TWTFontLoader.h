@@ -9,12 +9,20 @@
 @import Foundation;
 
 
-extern NSString *const kTWTFontLoaderDidOpenFontNotification;
+extern NSString *const kTWTFontLoaderDidStartWebServerNotification;
+extern NSString *const kTWTFontLoaderDidStopWebServerNotification;
+extern NSString *const kTWTFontLoaderDidChangeFontsNotification;
 
 
 @interface TWTFontLoader : NSObject
 
-+ (void)loadFonts;
-+ (BOOL)openFontWithURL:(NSURL *)url;
++ (instancetype)sharedInstance;
+
+- (void)loadFonts;
+- (BOOL)openFontWithURL:(NSURL *)url;
+- (BOOL)loadFontWithURL:(NSURL *)url;
+- (BOOL)unloadFontWithURL:(NSURL *)url;
+
+@property (nonatomic, readonly) NSURL *webServerURL;
 
 @end
