@@ -115,10 +115,16 @@ static NSString *const kDefaultFontName = @"Helvetica";
         return [NSString stringWithFormat:@"%@ pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.descender)]];
     };
 
+    TWTFontMetricView *lineHeightMetricView = [[TWTFontMetricView alloc] init];
+    lineHeightMetricView.metricName = NSLocalizedString(@"Line height", nil);
+    lineHeightMetricView.metricValueBlock = ^(UIFont *font) {
+        return [NSString stringWithFormat:@"%@", [self.pointSizeNumberFormatter stringFromNumber:@(font.lineHeight)]];
+    };
+
     TWTFontMetricView *lineHeightMultiplierMetricView = [[TWTFontMetricView alloc] init];
     lineHeightMultiplierMetricView.metricName = NSLocalizedString(@"Line height multiplier", nil);
     lineHeightMultiplierMetricView.metricValueBlock = ^(UIFont *font) {
-        return [NSString stringWithFormat:@"%@", [self.pointSizeNumberFormatter stringFromNumber:@(font.pointSize / (font.ascender + font.descender))]];
+        return [NSString stringWithFormat:@"%@", [self.pointSizeNumberFormatter stringFromNumber:@(font.lineHeight / font.pointSize)]];
     };
 
     TWTFontMetricView *ascenderRatioMetricView = [[TWTFontMetricView alloc] init];
@@ -133,7 +139,7 @@ static NSString *const kDefaultFontName = @"Helvetica";
         return [NSString stringWithFormat:@"%@", [self.pointSizeNumberFormatter stringFromNumber:@(font.descender / font.pointSize)]];
     };
 
-    self.metricViews = @[ sizeMetricView, ascenderMetricView, descenderMetricView, lineHeightMultiplierMetricView, ascenderRatioMetricView, descenderRatioMetricView ];
+    self.metricViews = @[ sizeMetricView, ascenderMetricView, descenderMetricView, lineHeightMetricView, lineHeightMultiplierMetricView, ascenderRatioMetricView, descenderRatioMetricView ];
 
     for (TWTFontMetricView *metricView in self.metricViews) {
         metricView.translatesAutoresizingMaskIntoConstraints = NO;
