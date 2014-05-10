@@ -104,11 +104,13 @@ static NSString *const kDefaultFontName = @"Helvetica";
     contentView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.scrollView addSubview:contentView];
 
-    TWTFontMetricView *postscriptNameMetricView = [[TWTFontMetricView alloc] init];
-    postscriptNameMetricView.metricName = NSLocalizedString(@"PS Name", nil);
-    postscriptNameMetricView.metricValueBlock = ^(UIFont *font) {
-        return font.fontDescriptor.postscriptName;
-    };
+    UILabel *label = [[UILabel alloc] init];
+    label.text = self.userDefaults.previewText;
+    label.numberOfLines = 0;
+    label.textAlignment = NSTextAlignmentCenter;
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    [contentView addSubview:label];
+    self.label = label;
 
     TWTFontMetricView *sizeMetricView = [[TWTFontMetricView alloc] init];
     sizeMetricView.metricName = NSLocalizedString(@"Point size", nil);
@@ -152,26 +154,26 @@ static NSString *const kDefaultFontName = @"Helvetica";
         return [NSString stringWithFormat:@"%@", [self.pointSizeNumberFormatter stringFromNumber:@(font.descender / font.pointSize)]];
     };
 
-    self.metricViews = @[ postscriptNameMetricView, sizeMetricView, ascenderMetricView, descenderMetricView, lineHeightMetricView, lineHeightMultiplierMetricView, ascenderRatioMetricView, descenderRatioMetricView ];
+    TWTFontMetricView *postscriptNameMetricView = [[TWTFontMetricView alloc] init];
+    postscriptNameMetricView.metricName = NSLocalizedString(@"PS Name", nil);
+    postscriptNameMetricView.metricValueBlock = ^(UIFont *font) {
+        return font.fontDescriptor.postscriptName;
+    };
 
-    for (TWTFontMetricView *metricView in self.metricViews) {
+    self.metricViews = @[ sizeMetricView,
+                          ascenderMetricView,
+                          descenderMetricView,
+                          lineHeightMetricView,
+                          lineHeightMultiplierMetricView,
+                          ascenderRatioMetricView,
+                          descenderRatioMetricView,
+                          postscriptNameMetricView ];
+
+    [self.metricViews enumerateObjectsUsingBlock:^(TWTFontMetricView *metricView, NSUInteger idx, BOOL *stop) {
+        metricView.backgroundColor = (idx % 2) == 0 ? [UIColor colorWithWhite:0.9 alpha:1.0] : [UIColor whiteColor];
         metricView.translatesAutoresizingMaskIntoConstraints = NO;
         [contentView addSubview:metricView];
-    }
-
-    NSInteger index = 0;
-    for (TWTFontMetricView *metricView in self.metricViews.reverseObjectEnumerator) {
-        metricView.backgroundColor = (index % 2) == 0 ? [UIColor colorWithWhite:0.9 alpha:1.0] : [UIColor whiteColor];
-        index++;
-    }
-
-    UILabel *label = [[UILabel alloc] init];
-    label.text = self.userDefaults.previewText;
-    label.numberOfLines = 0;
-    label.textAlignment = NSTextAlignmentCenter;
-    label.translatesAutoresizingMaskIntoConstraints = NO;
-    [contentView addSubview:label];
-    self.label = label;
+    }];
 
     NSDictionary *views = NSDictionaryOfVariableBindings(scrollView);
     [self.view twt_addConstraintsWithVisualFormatStrings:@[ @"H:|[scrollView]|",
@@ -191,34 +193,26 @@ static NSString *const kDefaultFontName = @"Helvetica";
                                                              @"V:|[contentView]|" ]
                                                     views:views];
 
-    UIView *previousView = contentView;
-    NSLayoutAttribute attribute = NSLayoutAttributeTop;
-    for (UIView *metricView in self.metricViews) {
-        views = NSDictionaryOfVariableBindings(metricView);
-        [contentView twt_addConstraintsWithVisualFormatStrings:@[ @"H:|[metricView]|" ]
-                                                         views:views];
-        [contentView addConstraint:[NSLayoutConstraint constraintWithItem:metricView
-                                                                attribute:NSLayoutAttributeTop
-                                                                relatedBy:NSLayoutRelationEqual
-                                                                   toItem:previousView
-                                                                attribute:attribute
-                                                               multiplier:1.0
-                                                                 constant:0.0]];
-        previousView = metricView;
-        attribute = NSLayoutAttributeBottom;
-    }
-
     views = NSDictionaryOfVariableBindings(label);
-    [contentView twt_addConstraintsWithVisualFormatStrings:@[ @"H:|-15-[label]-15-|", @"V:[label]-|" ]
+    [contentView twt_addConstraintsWithVisualFormatStrings:@[ @"H:|-15-[label]-15-|", @"V:|-[label]" ]
                                                      views:views];
 
-    [contentView addConstraint:[NSLayoutConstraint constraintWithItem:label
-                                                            attribute:NSLayoutAttributeTop
-                                                            relatedBy:NSLayoutRelationEqual
-                                                               toItem:previousView
-                                                            attribute:attribute
-                                                           multiplier:1.0
-                                                             constant:20.0]];
+    UIView *previousView = label;
+    NSDictionary *metrics = @{ @"spacing" : @20 };
+    for (UIView *metricView in self.metricViews) {
+        views = NSDictionaryOfVariableBindings(previousView, metricView);
+        [contentView twt_addConstraintsWithVisualFormatStrings:@[ @"H:|[metricView]|",
+                                                                  @"V:[previousView]-spacing-[metricView]" ]
+                                                       metrics:metrics
+                                                         views:views];
+        previousView = metricView;
+        metrics = @{ @"spacing" : @0 };
+    }
+
+    views = NSDictionaryOfVariableBindings(previousView);
+    [contentView twt_addConstraintsWithVisualFormatStrings:@[ @"V:[previousView]-spacing-|" ]
+                                                   metrics:metrics
+                                                     views:views];
 
     [self updateFont];
 }
