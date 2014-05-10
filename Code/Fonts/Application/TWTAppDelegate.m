@@ -12,7 +12,7 @@
 
 #import "TWTEnvironment.h"
 #import "TWTFontFamiliesViewController.h"
-#import "TWTFontLoader.h"
+#import "TWTFontsController.h"
 #import "TWTFontPreviewViewController.h"
 
 
@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[TWTFontLoader sharedInstance] loadFonts];
+    [[TWTFontsController sharedInstance] loadFonts];
 
     TWTFontFamiliesViewController *fontFamiliesViewController = [[TWTFontFamiliesViewController alloc] init];
 
@@ -54,7 +54,7 @@
 
 - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
 {
-    return [[TWTFontLoader sharedInstance] openFontWithURL:url];
+    return [[TWTFontsController sharedInstance] openFontWithURL:url];
 }
 
 @end

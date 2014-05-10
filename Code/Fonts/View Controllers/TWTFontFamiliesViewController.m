@@ -8,7 +8,7 @@
 
 #import "TWTFontFamiliesViewController.h"
 
-#import "TWTFontLoader.h"
+#import "TWTFontsController.h"
 #import "TWTFontsViewController.h"
 
 
@@ -43,19 +43,19 @@ static NSString *const kCellIdentifier = @"family cell";
         self.toolbarItems = @[ webServerURLItem ];
 
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(fontLoaderDidChangeFonts:)
-                                                     name:kTWTFontLoaderDidChangeFontsNotification
-                                                   object:[TWTFontLoader sharedInstance]];
+                                                 selector:@selector(fontsControllerDidChangeFonts:)
+                                                     name:kTWTFontsControllerDidChangeFontsNotification
+                                                   object:[TWTFontsController sharedInstance]];
 
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(fontLoaderDidStartWebServer:)
-                                                     name:kTWTFontLoaderDidStartWebServerNotification
-                                                   object:[TWTFontLoader sharedInstance]];
+                                                 selector:@selector(fontsControllerDidStartWebServer:)
+                                                     name:kTWTFontsControllerDidStartWebServerNotification
+                                                   object:[TWTFontsController sharedInstance]];
 
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(fontLoaderDidStopWebServer:)
-                                                     name:kTWTFontLoaderDidStopWebServerNotification
-                                                   object:[TWTFontLoader sharedInstance]];
+                                                 selector:@selector(fontsControllerDidStopWebServer:)
+                                                     name:kTWTFontsControllerDidStopWebServerNotification
+                                                   object:[TWTFontsController sharedInstance]];
     }
     return self;
 }
@@ -76,7 +76,7 @@ static NSString *const kCellIdentifier = @"family cell";
 
 - (void)updateWebServerURLLabel
 {
-    NSString *urlString = [[[TWTFontLoader sharedInstance] webServerURL] absoluteString];
+    NSString *urlString = [[[TWTFontsController sharedInstance] webServerURL] absoluteString];
     self.webServerURLLabel.text = urlString ?: nil;
     [self.webServerURLLabel sizeToFit];
 }
@@ -84,7 +84,7 @@ static NSString *const kCellIdentifier = @"family cell";
 
 #pragma mark - Notification Handlers
 
-- (void)fontLoaderDidChangeFonts:(NSNotification *)notification
+- (void)fontsControllerDidChangeFonts:(NSNotification *)notification
 {
     self.familyNames = [[UIFont familyNames] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
     if (self.isViewLoaded) {
@@ -93,13 +93,13 @@ static NSString *const kCellIdentifier = @"family cell";
 }
 
 
-- (void)fontLoaderDidStartWebServer:(NSNotification *)notification
+- (void)fontsControllerDidStartWebServer:(NSNotification *)notification
 {
     [self updateWebServerURLLabel];
 }
 
 
-- (void)fontLoaderDidStopWebServer:(NSNotification *)notification
+- (void)fontsControllerDidStopWebServer:(NSNotification *)notification
 {
     [self updateWebServerURLLabel];
 }

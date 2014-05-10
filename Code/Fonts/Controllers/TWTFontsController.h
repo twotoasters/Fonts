@@ -1,5 +1,5 @@
 //
-//  TWTFontLoader.h
+//  TWTFontsController.h
 //  Fonts
 //
 //  Created by Andrew Hershberger on 2/20/14.
@@ -9,12 +9,12 @@
 @import Foundation;
 
 
-extern NSString *const kTWTFontLoaderDidStartWebServerNotification;
-extern NSString *const kTWTFontLoaderDidStopWebServerNotification;
-extern NSString *const kTWTFontLoaderDidChangeFontsNotification;
+extern NSString *const kTWTFontsControllerDidStartWebServerNotification;
+extern NSString *const kTWTFontsControllerDidStopWebServerNotification;
+extern NSString *const kTWTFontsControllerDidChangeFontsNotification;
 
 
-@interface TWTFontLoader : NSObject
+@interface TWTFontsController : NSObject
 
 + (instancetype)sharedInstance;
 

@@ -1,12 +1,12 @@
 //
-//  TWTFontLoader.m
+//  TWTFontsController.m
 //  Fonts
 //
 //  Created by Andrew Hershberger on 2/20/14.
 //  Copyright (c) 2014 Two Toasters, LLC. All rights reserved.
 //
 
-#import "TWTFontLoader.h"
+#import "TWTFontsController.h"
 
 @import CoreText;
 
@@ -15,26 +15,26 @@
 #import "TWTEnvironment.h"
 
 
-NSString *const kTWTFontLoaderDidStartWebServerNotification = @"TWTFontLoaderDidStartWebServer";
-NSString *const kTWTFontLoaderDidStopWebServerNotification = @"TWTFontLoaderDidStopWebServer";
-NSString *const kTWTFontLoaderDidChangeFontsNotification = @"TWTFontLoaderDidChangeFonts";
+NSString *const kTWTFontsControllerDidStartWebServerNotification = @"TWTFontsControllerDidStartWebServer";
+NSString *const kTWTFontsControllerDidStopWebServerNotification = @"TWTFontsControllerDidStopWebServer";
+NSString *const kTWTFontsControllerDidChangeFontsNotification = @"TWTFontsControllerDidChangeFonts";
 
 
-@interface TWTFontLoader () <GCDWebUploaderDelegate>
+@interface TWTFontsController () <GCDWebUploaderDelegate>
 
 @property (nonatomic, strong) TWTWebUploader *webServer;
 
 @end
 
 
-@implementation TWTFontLoader
+@implementation TWTFontsController
 
 + (instancetype)sharedInstance
 {
-    static TWTFontLoader *sharedInstance = nil;
+    static TWTFontsController *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[TWTFontLoader alloc] init];
+        sharedInstance = [[TWTFontsController alloc] init];
     });
     return sharedInstance;
 }
@@ -72,15 +72,6 @@ NSString *const kTWTFontLoaderDidChangeFontsNotification = @"TWTFontLoaderDidCha
 
 - (BOOL)openFontWithURL:(NSURL *)url
 {
-    if (!url.isFileURL) {
-        return NO;
-    }
-
-    if (![self.webServer.allowedFileExtensions containsObject:url.pathExtension]) {
-        NSLog(@"Skipping non-font file: %@", url);
-        return NO;
-    }
-
     NSURL *toURL = [[self fontsDirectoryURL] URLByAppendingPathComponent:url.lastPathComponent isDirectory:NO];
 
     NSError *error = nil;
@@ -104,7 +95,7 @@ NSString *const kTWTFontLoaderDidChangeFontsNotification = @"TWTFontLoaderDidCha
     bool success = CTFontManagerRegisterFontsForURL((CFURLRef)url, kCTFontManagerScopeProcess, &error);
 
     if (success) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontLoaderDidChangeFontsNotification object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontsControllerDidChangeFontsNotification object:self userInfo:nil];
     }
     else {
         CFStringRef errorDescription = CFErrorCopyDescription(error);
@@ -128,7 +119,7 @@ NSString *const kTWTFontLoaderDidChangeFontsNotification = @"TWTFontLoaderDidCha
     bool success = CTFontManagerUnregisterFontsForURL((CFURLRef)url, kCTFontManagerScopeProcess, &error);
 
     if (success) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontLoaderDidChangeFontsNotification object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontsControllerDidChangeFontsNotification object:self userInfo:nil];
     }
     else {
         CFStringRef errorDescription = CFErrorCopyDescription(error);
@@ -173,7 +164,7 @@ NSString *const kTWTFontLoaderDidChangeFontsNotification = @"TWTFontLoaderDidCha
 - (void)webServerDidStart:(GCDWebServer *)server
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontLoaderDidStartWebServerNotification object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontsControllerDidStartWebServerNotification object:self userInfo:nil];
     });
 }
 
@@ -181,7 +172,7 @@ NSString *const kTWTFontLoaderDidChangeFontsNotification = @"TWTFontLoaderDidCha
 - (void)webServerDidStop:(GCDWebServer *)server;
 {
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontLoaderDidStopWebServerNotification object:self userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontsControllerDidStopWebServerNotification object:self userInfo:nil];
     });
 }
 

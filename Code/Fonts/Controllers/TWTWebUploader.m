@@ -8,7 +8,7 @@
 
 #import "TWTWebUploader.h"
 
-#import "TWTFontLoader.h"
+#import "TWTFontsController.h"
 
 
 @implementation TWTWebUploader
@@ -21,7 +21,7 @@
 
     if ([self.allowedFileExtensions containsObject:url.pathExtension]) {
         dispatch_sync(dispatch_get_main_queue(), ^{
-            shouldDelete = [[TWTFontLoader sharedInstance] unloadFontWithURL:url];
+            shouldDelete = [[TWTFontsController sharedInstance] unloadFontWithURL:url];
         });
     }
 
