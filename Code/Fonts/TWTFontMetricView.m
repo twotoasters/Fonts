@@ -30,18 +30,20 @@
         _metricNameLabel.font = [UIFont boldSystemFontOfSize:17.0];
         _metricNameLabel.textAlignment = NSTextAlignmentLeft;
         _metricNameLabel.translatesAutoresizingMaskIntoConstraints = NO;
+        [_metricNameLabel setContentCompressionResistancePriority:UILayoutPriorityRequired
+                                                          forAxis:UILayoutConstraintAxisHorizontal];
         [self addSubview:_metricNameLabel];
 
         _metricValueLabel = [[UILabel alloc] init];
         _metricValueLabel.font = [UIFont systemFontOfSize:17.0];
         _metricValueLabel.textAlignment = NSTextAlignmentRight;
+        _metricValueLabel.adjustsFontSizeToFitWidth = YES;
         _metricValueLabel.translatesAutoresizingMaskIntoConstraints = NO;
         [self addSubview:_metricValueLabel];
 
         NSDictionary *views = NSDictionaryOfVariableBindings(_metricNameLabel, _metricValueLabel);
         [self twt_addConstraintsWithVisualFormatStrings:@[ @"V:|-10-[_metricNameLabel]-10-|",
-                                                           @"H:|-15-[_metricNameLabel]",
-                                                           @"H:[_metricValueLabel]-15-|" ]
+                                                           @"H:|-15-[_metricNameLabel]->=15-[_metricValueLabel]-15-|" ]
                                                   views:views];
 
         [self addConstraint:[NSLayoutConstraint constraintWithItem:_metricValueLabel

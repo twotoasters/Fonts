@@ -11,6 +11,7 @@
 #import "TWTEnvironment.h"
 #import "TWTFontLoader.h"
 #import "TWTFontPreviewViewController.h"
+#import "UIFontDescriptor+Fonts.h"
 
 
 NSString *const kTWTFontsViewControllerSelectedFontNameDidChangeNotification = @"TWTFontsViewControllerSelectedFontNameDidChange";
@@ -37,6 +38,11 @@ static NSString *const kCellIdentifier = @"font cell";
 {
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
+
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                                 style:UIBarButtonItemStylePlain
+                                                                                target:nil
+                                                                                action:NULL];
 
         UIBarButtonItem *webServerURLItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
         _webServerURLLabel = (UILabel *)webServerURLItem.customView;
@@ -77,6 +83,22 @@ static NSString *const kCellIdentifier = @"font cell";
 }
 
 
+- (void)reloadFontNames
+{
+    self.fontNames = [[UIFont fontNamesForFamilyName:self.familyName] sortedArrayUsingComparator:^NSComparisonResult(NSString *fontName1, NSString *fontName2) {
+        NSString *face1 = [UIFontDescriptor twt_faceForFontName:fontName1];
+        NSString *face2 = [UIFontDescriptor twt_faceForFontName:fontName2];
+        return [face1 localizedCaseInsensitiveCompare:face2];
+    }];
+
+    self.selectedFontName = [self.fontNames firstObject];
+
+    if (self.isViewLoaded) {
+        [self.tableView reloadData];
+    }
+}
+
+
 - (void)updateWebServerURLLabel
 {
     NSString *urlString = [[[TWTFontLoader sharedInstance] webServerURL] absoluteString];
@@ -93,12 +115,7 @@ static NSString *const kCellIdentifier = @"font cell";
 
     self.title = _familyName;
 
-    self.fontNames = [[UIFont fontNamesForFamilyName:familyName] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-    self.selectedFontName = [self.fontNames firstObject];
-
-    if (self.isViewLoaded) {
-        [self.tableView reloadData];
-    }
+    [self reloadFontNames];
 }
 
 
@@ -148,7 +165,7 @@ static NSString *const kCellIdentifier = @"font cell";
 
 - (void)fontLoaderDidChangeFonts:(NSNotification *)notification
 {
-    self.fontNames = [[UIFont fontNamesForFamilyName:self.familyName] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
+    [self reloadFontNames];
 
     if (self.fontNames.count == 0) {
         [self.navigationController popToRootViewControllerAnimated:YES];
@@ -184,7 +201,7 @@ static NSString *const kCellIdentifier = @"font cell";
 {
     NSString *fontName = self.fontNames[indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier forIndexPath:indexPath];
-    cell.textLabel.text = fontName;
+    cell.textLabel.text = [UIFontDescriptor twt_faceForFontName:fontName];
     if (TWTUserInterfaceIdiomIsPad()) {
         cell.accessoryType = (  [fontName isEqualToString:self.selectedFontName]
                               ? UITableViewCellAccessoryCheckmark

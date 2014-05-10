@@ -13,8 +13,10 @@
 #import "TWTEnvironment.h"
 #import "TWTFontMetricView.h"
 #import "TWTFontsViewController.h"
+#import "TWTNavigationBarTitleView.h"
 #import "TWTTextEditorViewController.h"
 #import "TWTUserDefaults.h"
+#import "UIFont+Fonts.h"
 #import "UIViewController+Fonts.h"
 
 
@@ -37,6 +39,8 @@ static NSString *const kDefaultFontName = @"Helvetica";
 
 @property (nonatomic, weak) UISlider *fontSizeSlider;
 
+@property (nonatomic, strong) TWTNavigationBarTitleView *titleView;
+
 @end
 
 
@@ -49,6 +53,9 @@ static NSString *const kDefaultFontName = @"Helvetica";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         _fontSize = 18.0;
+
+        _titleView = [[TWTNavigationBarTitleView alloc] init];
+        self.navigationItem.titleView = _titleView;
 
         UISlider *slider = [[UISlider alloc] init];
         slider.minimumValue = 8.0;
@@ -97,6 +104,12 @@ static NSString *const kDefaultFontName = @"Helvetica";
     contentView.translatesAutoresizingMaskIntoConstraints = NO;
     [self.scrollView addSubview:contentView];
 
+    TWTFontMetricView *postscriptNameMetricView = [[TWTFontMetricView alloc] init];
+    postscriptNameMetricView.metricName = NSLocalizedString(@"PS Name", nil);
+    postscriptNameMetricView.metricValueBlock = ^(UIFont *font) {
+        return font.fontDescriptor.postscriptName;
+    };
+
     TWTFontMetricView *sizeMetricView = [[TWTFontMetricView alloc] init];
     sizeMetricView.metricName = NSLocalizedString(@"Point size", nil);
     sizeMetricView.metricValueBlock = ^(UIFont *font) {
@@ -122,7 +135,7 @@ static NSString *const kDefaultFontName = @"Helvetica";
     };
 
     TWTFontMetricView *lineHeightMultiplierMetricView = [[TWTFontMetricView alloc] init];
-    lineHeightMultiplierMetricView.metricName = NSLocalizedString(@"Line height multiplier", nil);
+    lineHeightMultiplierMetricView.metricName = NSLocalizedString(@"Line height / point size", nil);
     lineHeightMultiplierMetricView.metricValueBlock = ^(UIFont *font) {
         return [NSString stringWithFormat:@"%@", [self.pointSizeNumberFormatter stringFromNumber:@(font.lineHeight / font.pointSize)]];
     };
@@ -139,7 +152,7 @@ static NSString *const kDefaultFontName = @"Helvetica";
         return [NSString stringWithFormat:@"%@", [self.pointSizeNumberFormatter stringFromNumber:@(font.descender / font.pointSize)]];
     };
 
-    self.metricViews = @[ sizeMetricView, ascenderMetricView, descenderMetricView, lineHeightMetricView, lineHeightMultiplierMetricView, ascenderRatioMetricView, descenderRatioMetricView ];
+    self.metricViews = @[ postscriptNameMetricView, sizeMetricView, ascenderMetricView, descenderMetricView, lineHeightMetricView, lineHeightMultiplierMetricView, ascenderRatioMetricView, descenderRatioMetricView ];
 
     for (TWTFontMetricView *metricView in self.metricViews) {
         metricView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -312,7 +325,9 @@ static NSString *const kDefaultFontName = @"Helvetica";
 {
     UIFont *font = [UIFont fontWithName:self.fontName ?: kDefaultFontName size:self.fontSize];
 
-    self.title = font.fontName;
+    self.titleView.title = font.familyName;
+    self.titleView.subtitle = font.twt_face;
+    [self.titleView sizeToFit];
     self.label.font = font;
 
     for (TWTFontMetricView *metricView in self.metricViews) {

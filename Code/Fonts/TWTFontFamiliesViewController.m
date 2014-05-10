@@ -31,7 +31,10 @@ static NSString *const kCellIdentifier = @"family cell";
     self = [super initWithStyle:UITableViewStylePlain];
     if (self) {
         _familyNames = [[UIFont familyNames] sortedArrayUsingSelector:@selector(localizedCaseInsensitiveCompare:)];
-        self.title = NSLocalizedString(@"Fonts", nil);
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@""
+                                                                                 style:UIBarButtonItemStylePlain
+                                                                                target:nil
+                                                                                action:NULL];
 
         UIBarButtonItem *webServerURLItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
         _webServerURLLabel = (UILabel *)webServerURLItem.customView;
