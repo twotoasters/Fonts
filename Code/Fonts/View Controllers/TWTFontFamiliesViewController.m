@@ -10,6 +10,7 @@
 
 #import "TWTFontsController.h"
 #import "TWTFontsViewController.h"
+#import "TWTWebUploader.h"
 
 
 static NSString *const kCellIdentifier = @"family cell";
@@ -19,7 +20,7 @@ static NSString *const kCellIdentifier = @"family cell";
 
 @property (nonatomic, copy) NSArray *familyNames;
 
-@property (nonatomic, weak) UILabel *webServerURLLabel;
+@property (nonatomic, weak) UILabel *webUploaderURLLabel;
 
 @end
 
@@ -36,11 +37,12 @@ static NSString *const kCellIdentifier = @"family cell";
                                                                                 target:nil
                                                                                 action:NULL];
 
-        UIBarButtonItem *webServerURLItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
-        _webServerURLLabel = (UILabel *)webServerURLItem.customView;
-        [self updateWebServerURLLabel];
+        UIBarButtonItem *webUploaderURLItem = [[UIBarButtonItem alloc] initWithCustomView:[[UILabel alloc] init]];
+        _webUploaderURLLabel = (UILabel *)webUploaderURLItem.customView;
 
-        self.toolbarItems = @[ webServerURLItem ];
+        self.toolbarItems = @[ webUploaderURLItem ];
+
+        [self updateWebUploaderURLLabel];
 
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(fontsControllerDidChangeFonts:)
@@ -48,14 +50,9 @@ static NSString *const kCellIdentifier = @"family cell";
                                                    object:[TWTFontsController sharedInstance]];
 
         [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(fontsControllerDidStartWebServer:)
-                                                     name:kTWTFontsControllerDidStartWebServerNotification
-                                                   object:[TWTFontsController sharedInstance]];
-
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(fontsControllerDidStopWebServer:)
-                                                     name:kTWTFontsControllerDidStopWebServerNotification
-                                                   object:[TWTFontsController sharedInstance]];
+                                                 selector:@selector(webUploaderDidChangeURL:)
+                                                     name:kTWTWebUploaderDidChangeURLNotification
+                                                   object:[TWTWebUploader sharedInstance]];
     }
     return self;
 }
@@ -74,11 +71,11 @@ static NSString *const kCellIdentifier = @"family cell";
 }
 
 
-- (void)updateWebServerURLLabel
+- (void)updateWebUploaderURLLabel
 {
-    NSString *urlString = [[[TWTFontsController sharedInstance] webServerURL] absoluteString];
-    self.webServerURLLabel.text = urlString ?: nil;
-    [self.webServerURLLabel sizeToFit];
+    TWTWebUploader *webUploader = [TWTWebUploader sharedInstance];
+    self.webUploaderURLLabel.text = webUploader.isRunning ? webUploader.serverURL.absoluteString : nil;
+    [self.webUploaderURLLabel sizeToFit];
 }
 
 
@@ -93,15 +90,9 @@ static NSString *const kCellIdentifier = @"family cell";
 }
 
 
-- (void)fontsControllerDidStartWebServer:(NSNotification *)notification
+- (void)webUploaderDidChangeURL:(NSNotification *)notification
 {
-    [self updateWebServerURLLabel];
-}
-
-
-- (void)fontsControllerDidStopWebServer:(NSNotification *)notification
-{
-    [self updateWebServerURLLabel];
+    [self updateWebUploaderURLLabel];
 }
 
 

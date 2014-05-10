@@ -9,5 +9,11 @@
 #import <GCDWebServer/GCDWebUploader.h>
 
 
+extern NSString *const kTWTWebUploaderDidChangeURLNotification;
+
+
 @interface TWTWebUploader : GCDWebUploader
+
++ (instancetype)sharedInstance;
+
 @end

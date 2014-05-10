@@ -10,21 +10,10 @@
 
 @import CoreText;
 
-#import "TWTWebUploader.h"
-
 #import "TWTEnvironment.h"
 
 
-NSString *const kTWTFontsControllerDidStartWebServerNotification = @"TWTFontsControllerDidStartWebServer";
-NSString *const kTWTFontsControllerDidStopWebServerNotification = @"TWTFontsControllerDidStopWebServer";
 NSString *const kTWTFontsControllerDidChangeFontsNotification = @"TWTFontsControllerDidChangeFonts";
-
-
-@interface TWTFontsController () <GCDWebUploaderDelegate>
-
-@property (nonatomic, strong) TWTWebUploader *webServer;
-
-@end
 
 
 @implementation TWTFontsController
@@ -34,23 +23,9 @@ NSString *const kTWTFontsControllerDidChangeFontsNotification = @"TWTFontsContro
     static TWTFontsController *sharedInstance = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        sharedInstance = [[TWTFontsController alloc] init];
+        sharedInstance = [[[self class] alloc] init];
     });
     return sharedInstance;
-}
-
-
-- (id)init
-{
-    self = [super init];
-    if (self) {
-        NSString *uploadPath = [[self fontsDirectoryURL] path];
-        _webServer = [[TWTWebUploader alloc] initWithUploadDirectory:uploadPath];
-        _webServer.allowedFileExtensions = @[ @"ttf", @"otf" ];
-        _webServer.delegate = self;
-        [_webServer start];
-    }
-    return self;
 }
 
 
@@ -67,23 +42,6 @@ NSString *const kTWTFontsControllerDidChangeFontsNotification = @"TWTFontsContro
     for (NSURL *fileURL in fileURLs) {
         [self loadFontWithURL:fileURL];
     }
-}
-
-
-- (BOOL)openFontWithURL:(NSURL *)url
-{
-    NSURL *toURL = [[self fontsDirectoryURL] URLByAppendingPathComponent:url.lastPathComponent isDirectory:NO];
-
-    NSError *error = nil;
-    NSFileManager *fileManager = [[NSFileManager alloc] init];
-    BOOL copySuccess = [fileManager copyItemAtURL:url toURL:toURL error:&error];
-
-    if (!copySuccess) {
-        NSLog(@"Failed to copy file from %@ to %@", url, toURL);
-        return NO;
-    }
-
-    return [self loadFontWithURL:toURL];
 }
 
 
@@ -131,6 +89,8 @@ NSString *const kTWTFontsControllerDidChangeFontsNotification = @"TWTFontsContro
 }
 
 
+#pragma mark - Property Accessors
+
 - (NSURL *)fontsDirectoryURL
 {
     NSURL *fontsDirectoryURL = [TWTDocumentsDirectoryURL() URLByAppendingPathComponent:@"Fonts" isDirectory:YES];
@@ -141,39 +101,6 @@ NSString *const kTWTFontsControllerDidChangeFontsNotification = @"TWTFontsContro
     NSAssert(success, @"Failed to create directory: %@ %@", fontsDirectoryURL, error);
 
     return fontsDirectoryURL;
-}
-
-
-- (NSURL *)webServerURL
-{
-    return self.webServer.serverURL;
-}
-
-
-#pragma mark - GCDWebUploaderDelegate
-
-- (void)webUploader:(GCDWebUploader *)uploader didUploadFileAtPath:(NSString *)path
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSURL *url = [NSURL fileURLWithPath:path];
-        [self loadFontWithURL:url];
-    });
-}
-
-
-- (void)webServerDidStart:(GCDWebServer *)server
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontsControllerDidStartWebServerNotification object:self userInfo:nil];
-    });
-}
-
-
-- (void)webServerDidStop:(GCDWebServer *)server;
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTFontsControllerDidStopWebServerNotification object:self userInfo:nil];
-    });
 }
 
 @end

@@ -11,7 +11,38 @@
 #import "TWTFontsController.h"
 
 
+NSString *const kTWTWebUploaderDidChangeURLNotification = @"TWTWebUploaderDidChangeURL";
+
+
+@interface TWTWebUploader () <GCDWebUploaderDelegate>
+@end
+
+
 @implementation TWTWebUploader
+
+
++ (instancetype)sharedInstance
+{
+    static TWTWebUploader *webUploader = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        webUploader = [[[self class] alloc] init];
+    });
+    return webUploader;
+}
+
+
+- (instancetype)init
+{
+    NSString *uploadPath = [[[TWTFontsController sharedInstance] fontsDirectoryURL] path];
+    self = [super initWithUploadDirectory:uploadPath];
+    if (self) {
+        self.allowedFileExtensions = @[ @"ttf", @"otf" ];
+        self.delegate = self;
+    }
+    return self;
+}
+
 
 - (BOOL)shouldDeleteItemAtPath:(NSString *)path
 {
@@ -38,6 +69,39 @@
 - (BOOL)shouldMoveItemFromPath:(NSString *)fromPath toPath:(NSString *)toPath
 {
     return NO;
+}
+
+
+- (void)postDidChangeURLNotification
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSNotificationCenter defaultCenter] postNotificationName:kTWTWebUploaderDidChangeURLNotification
+                                                            object:self
+                                                          userInfo:nil];
+    });
+}
+
+
+#pragma mark - GCDWebUploaderDelegate
+
+- (void)webUploader:(GCDWebUploader *)uploader didUploadFileAtPath:(NSString *)path
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSURL *url = [NSURL fileURLWithPath:path];
+        [[TWTFontsController sharedInstance] loadFontWithURL:url];
+    });
+}
+
+
+- (void)webServerDidStart:(GCDWebServer *)server
+{
+    [self postDidChangeURLNotification];
+}
+
+
+- (void)webServerDidStop:(GCDWebServer *)server;
+{
+    [self postDidChangeURLNotification];
 }
 
 @end

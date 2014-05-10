@@ -9,8 +9,6 @@
 @import Foundation;
 
 
-extern NSString *const kTWTFontsControllerDidStartWebServerNotification;
-extern NSString *const kTWTFontsControllerDidStopWebServerNotification;
 extern NSString *const kTWTFontsControllerDidChangeFontsNotification;
 
 
@@ -19,10 +17,10 @@ extern NSString *const kTWTFontsControllerDidChangeFontsNotification;
 + (instancetype)sharedInstance;
 
 - (void)loadFonts;
-- (BOOL)openFontWithURL:(NSURL *)url;
+
 - (BOOL)loadFontWithURL:(NSURL *)url;
 - (BOOL)unloadFontWithURL:(NSURL *)url;
 
-@property (nonatomic, readonly) NSURL *webServerURL;
+@property (nonatomic, readonly) NSURL *fontsDirectoryURL;
 
 @end
