@@ -12,15 +12,17 @@
 
 #import "TWTEnvironment.h"
 #import "TWTFontFamiliesViewController.h"
-#import "TWTFontLoader.h"
 #import "TWTFontPreviewViewController.h"
+#import "TWTFontsController.h"
+#import "TWTWebUploader.h"
 
 
 @implementation TWTAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[TWTFontLoader sharedInstance] loadFonts];
+    [[TWTFontsController sharedInstance] loadFonts];
+    [[TWTWebUploader sharedInstance] start];
 
     TWTFontFamiliesViewController *fontFamiliesViewController = [[TWTFontFamiliesViewController alloc] init];
 
@@ -52,9 +54,24 @@
 }
 
 
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
 {
-    return [[TWTFontLoader sharedInstance] openFontWithURL:url];
+    NSURL *fontsDirectoryURL = [[TWTFontsController sharedInstance] fontsDirectoryURL];
+    NSURL *toURL = [fontsDirectoryURL URLByAppendingPathComponent:url.lastPathComponent
+                                                      isDirectory:NO];
+
+    NSError *error = nil;
+    BOOL copySuccess = [[NSFileManager defaultManager] copyItemAtURL:url toURL:toURL error:&error];
+
+    if (!copySuccess) {
+        NSLog(@"Failed to copy file from %@ to %@", url, toURL);
+        return NO;
+    }
+
+    return [[TWTFontsController sharedInstance] loadFontWithURL:url];
 }
 
 @end

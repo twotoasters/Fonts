@@ -10,7 +10,10 @@
 		4918CD0518B5A232005D8E55 /* TWTFontFamiliesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4918CD0418B5A232005D8E55 /* TWTFontFamiliesViewController.m */; };
 		4918CD0818B5A24C005D8E55 /* TWTFontPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4918CD0718B5A24C005D8E55 /* TWTFontPreviewViewController.m */; };
 		4918CD0B18B5A7D3005D8E55 /* TWTFontsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4918CD0A18B5A7D3005D8E55 /* TWTFontsViewController.m */; };
-		492C100C18B64E12007CE8FF /* TWTFontLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = 492C100B18B64E12007CE8FF /* TWTFontLoader.m */; };
+		492C100C18B64E12007CE8FF /* TWTFontsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 492C100B18B64E12007CE8FF /* TWTFontsController.m */; };
+		49367C9D191E7DA900C3D0D5 /* UIFont+Fonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 49367C9C191E7DA900C3D0D5 /* UIFont+Fonts.m */; };
+		49367CA0191E7F4A00C3D0D5 /* UIFontDescriptor+Fonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 49367C9F191E7F4A00C3D0D5 /* UIFontDescriptor+Fonts.m */; };
+		49367CA3191E845900C3D0D5 /* TWTNavigationBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49367CA2191E845900C3D0D5 /* TWTNavigationBarTitleView.m */; };
 		4940964419195CC100B930CF /* TWTWebUploader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4940964319195CC100B930CF /* TWTWebUploader.m */; };
 		497CAB2518B59C9C000DD7DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB2418B59C9C000DD7DE /* Foundation.framework */; };
 		497CAB2718B59C9C000DD7DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB2618B59C9C000DD7DE /* CoreGraphics.framework */; };
@@ -50,8 +53,14 @@
 		4918CD0718B5A24C005D8E55 /* TWTFontPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTFontPreviewViewController.m; sourceTree = "<group>"; };
 		4918CD0918B5A7D3005D8E55 /* TWTFontsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTFontsViewController.h; sourceTree = "<group>"; };
 		4918CD0A18B5A7D3005D8E55 /* TWTFontsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTFontsViewController.m; sourceTree = "<group>"; };
-		492C100A18B64E12007CE8FF /* TWTFontLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTFontLoader.h; sourceTree = "<group>"; };
-		492C100B18B64E12007CE8FF /* TWTFontLoader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTFontLoader.m; sourceTree = "<group>"; };
+		492C100A18B64E12007CE8FF /* TWTFontsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTFontsController.h; sourceTree = "<group>"; };
+		492C100B18B64E12007CE8FF /* TWTFontsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTFontsController.m; sourceTree = "<group>"; };
+		49367C9B191E7DA900C3D0D5 /* UIFont+Fonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFont+Fonts.h"; sourceTree = "<group>"; };
+		49367C9C191E7DA900C3D0D5 /* UIFont+Fonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFont+Fonts.m"; sourceTree = "<group>"; };
+		49367C9E191E7F4A00C3D0D5 /* UIFontDescriptor+Fonts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIFontDescriptor+Fonts.h"; sourceTree = "<group>"; };
+		49367C9F191E7F4A00C3D0D5 /* UIFontDescriptor+Fonts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIFontDescriptor+Fonts.m"; sourceTree = "<group>"; };
+		49367CA1191E845900C3D0D5 /* TWTNavigationBarTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTNavigationBarTitleView.h; sourceTree = "<group>"; };
+		49367CA2191E845900C3D0D5 /* TWTNavigationBarTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTNavigationBarTitleView.m; sourceTree = "<group>"; };
 		4940964219195CC100B930CF /* TWTWebUploader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTWebUploader.h; sourceTree = "<group>"; };
 		4940964319195CC100B930CF /* TWTWebUploader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTWebUploader.m; sourceTree = "<group>"; };
 		497CAB2118B59C9C000DD7DE /* Fonts.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Fonts.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,6 +117,71 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		49367CA4191EA85A00C3D0D5 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				497CAB3318B59C9C000DD7DE /* TWTAppDelegate.h */,
+				497CAB3418B59C9C000DD7DE /* TWTAppDelegate.m */,
+				49A089B81910504700283FE4 /* TWTEnvironment.h */,
+				49A089B91910504700283FE4 /* TWTEnvironment.m */,
+				497CAB3618B59C9C000DD7DE /* Images.xcassets */,
+				497CAB2B18B59C9C000DD7DE /* Supporting Files */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		49367CA5191EA86400C3D0D5 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				49A089BE1910528400283FE4 /* UIViewController+Fonts.h */,
+				49A089BF1910528400283FE4 /* UIViewController+Fonts.m */,
+				4918CD0318B5A232005D8E55 /* TWTFontFamiliesViewController.h */,
+				4918CD0418B5A232005D8E55 /* TWTFontFamiliesViewController.m */,
+				4918CD0618B5A24C005D8E55 /* TWTFontPreviewViewController.h */,
+				4918CD0718B5A24C005D8E55 /* TWTFontPreviewViewController.m */,
+				4918CD0918B5A7D3005D8E55 /* TWTFontsViewController.h */,
+				4918CD0A18B5A7D3005D8E55 /* TWTFontsViewController.m */,
+				49A089BB1910523C00283FE4 /* TWTTextEditorViewController.h */,
+				49A089BC1910523C00283FE4 /* TWTTextEditorViewController.m */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		49367CA6191EA86B00C3D0D5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				49E3371D1919770D00D09B83 /* TWTFontMetricView.h */,
+				49E3371E1919770D00D09B83 /* TWTFontMetricView.m */,
+				49367CA1191E845900C3D0D5 /* TWTNavigationBarTitleView.h */,
+				49367CA2191E845900C3D0D5 /* TWTNavigationBarTitleView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		49367CA7191EAAA500C3D0D5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				492C100A18B64E12007CE8FF /* TWTFontsController.h */,
+				492C100B18B64E12007CE8FF /* TWTFontsController.m */,
+				49A089C11910564C00283FE4 /* TWTUserDefaults.h */,
+				49A089C21910564C00283FE4 /* TWTUserDefaults.m */,
+				4940964219195CC100B930CF /* TWTWebUploader.h */,
+				4940964319195CC100B930CF /* TWTWebUploader.m */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		49367CA9191EACFE00C3D0D5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				49367C9B191E7DA900C3D0D5 /* UIFont+Fonts.h */,
+				49367C9C191E7DA900C3D0D5 /* UIFont+Fonts.m */,
+				49367C9E191E7F4A00C3D0D5 /* UIFontDescriptor+Fonts.h */,
+				49367C9F191E7F4A00C3D0D5 /* UIFontDescriptor+Fonts.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		497CAB1818B59C9C000DD7DE = {
 			isa = PBXGroup;
 			children = (
@@ -143,30 +217,11 @@
 		497CAB2A18B59C9C000DD7DE /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				497CAB3318B59C9C000DD7DE /* TWTAppDelegate.h */,
-				497CAB3418B59C9C000DD7DE /* TWTAppDelegate.m */,
-				497CAB3618B59C9C000DD7DE /* Images.xcassets */,
-				497CAB2B18B59C9C000DD7DE /* Supporting Files */,
-				4918CD0318B5A232005D8E55 /* TWTFontFamiliesViewController.h */,
-				4918CD0418B5A232005D8E55 /* TWTFontFamiliesViewController.m */,
-				4918CD0618B5A24C005D8E55 /* TWTFontPreviewViewController.h */,
-				4918CD0718B5A24C005D8E55 /* TWTFontPreviewViewController.m */,
-				4918CD0918B5A7D3005D8E55 /* TWTFontsViewController.h */,
-				4918CD0A18B5A7D3005D8E55 /* TWTFontsViewController.m */,
-				492C100A18B64E12007CE8FF /* TWTFontLoader.h */,
-				492C100B18B64E12007CE8FF /* TWTFontLoader.m */,
-				49A089B81910504700283FE4 /* TWTEnvironment.h */,
-				49A089B91910504700283FE4 /* TWTEnvironment.m */,
-				49A089BB1910523C00283FE4 /* TWTTextEditorViewController.h */,
-				49A089BC1910523C00283FE4 /* TWTTextEditorViewController.m */,
-				49A089BE1910528400283FE4 /* UIViewController+Fonts.h */,
-				49A089BF1910528400283FE4 /* UIViewController+Fonts.m */,
-				49A089C11910564C00283FE4 /* TWTUserDefaults.h */,
-				49A089C21910564C00283FE4 /* TWTUserDefaults.m */,
-				4940964219195CC100B930CF /* TWTWebUploader.h */,
-				4940964319195CC100B930CF /* TWTWebUploader.m */,
-				49E3371D1919770D00D09B83 /* TWTFontMetricView.h */,
-				49E3371E1919770D00D09B83 /* TWTFontMetricView.m */,
+				49367CA4191EA85A00C3D0D5 /* Application */,
+				49367CA7191EAAA500C3D0D5 /* Controllers */,
+				49367CA5191EA86400C3D0D5 /* View Controllers */,
+				49367CA6191EA86B00C3D0D5 /* Views */,
+				49367CA9191EACFE00C3D0D5 /* Models */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -338,13 +393,16 @@
 				49A089C31910564C00283FE4 /* TWTUserDefaults.m in Sources */,
 				4918CD0818B5A24C005D8E55 /* TWTFontPreviewViewController.m in Sources */,
 				49A089BA1910504700283FE4 /* TWTEnvironment.m in Sources */,
+				49367CA0191E7F4A00C3D0D5 /* UIFontDescriptor+Fonts.m in Sources */,
+				49367CA3191E845900C3D0D5 /* TWTNavigationBarTitleView.m in Sources */,
 				49A089BD1910523C00283FE4 /* TWTTextEditorViewController.m in Sources */,
-				492C100C18B64E12007CE8FF /* TWTFontLoader.m in Sources */,
+				492C100C18B64E12007CE8FF /* TWTFontsController.m in Sources */,
 				497CAB3518B59C9C000DD7DE /* TWTAppDelegate.m in Sources */,
 				4918CD0B18B5A7D3005D8E55 /* TWTFontsViewController.m in Sources */,
 				4918CD0518B5A232005D8E55 /* TWTFontFamiliesViewController.m in Sources */,
 				49A089C01910528400283FE4 /* UIViewController+Fonts.m in Sources */,
 				497CAB3118B59C9C000DD7DE /* main.m in Sources */,
+				49367C9D191E7DA900C3D0D5 /* UIFont+Fonts.m in Sources */,
 				49E3371F1919770D00D09B83 /* TWTFontMetricView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,8 +525,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Fonts/Fonts-Prefix.pch";
-				INFOPLIST_FILE = "Fonts/Fonts-Info.plist";
+				GCC_PREFIX_HEADER = "Fonts/Application/Fonts-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Fonts/Application/Fonts-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -483,8 +541,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Fonts/Fonts-Prefix.pch";
-				INFOPLIST_FILE = "Fonts/Fonts-Info.plist";
+				GCC_PREFIX_HEADER = "Fonts/Application/Fonts-Prefix.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/Fonts/Application/Fonts-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -501,7 +559,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Fonts/Fonts-Prefix.pch";
+				GCC_PREFIX_HEADER = "Fonts/Application/Fonts-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -523,7 +581,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Fonts/Fonts-Prefix.pch";
+				GCC_PREFIX_HEADER = "Fonts/Application/Fonts-Prefix.pch";
 				INFOPLIST_FILE = "FontsTests/FontsTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
