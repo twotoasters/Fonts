@@ -48,7 +48,7 @@ NSString *const kTWTWebUploaderDidChangeURLNotification = @"TWTWebUploaderDidCha
 {
     path = [[path stringByStandardizingPath] stringByDeletingLastPathComponent];
 
-    NSString *uploadPath = [[[[TWTFontsController sharedInstance] fontsDirectoryURL] path] stringByStandardizingPath];
+    NSString *uploadPath = [self.uploadDirectory stringByStandardizingPath];
 
     return [path isEqualToString:uploadPath];
 }
