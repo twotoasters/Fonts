@@ -44,8 +44,28 @@ NSString *const kTWTWebUploaderDidChangeURLNotification = @"TWTWebUploaderDidCha
 }
 
 
+- (BOOL)validatePath:(NSString *)path
+{
+    path = [[path stringByStandardizingPath] stringByDeletingLastPathComponent];
+
+    NSString *uploadPath = [[[[TWTFontsController sharedInstance] fontsDirectoryURL] path] stringByStandardizingPath];
+
+    return [path isEqualToString:uploadPath];
+}
+
+
+- (BOOL)shouldUploadFileAtPath:(NSString *)path withTemporaryFile:(NSString *)tempPath
+{
+    return [self validatePath:path];
+}
+
+
 - (BOOL)shouldDeleteItemAtPath:(NSString *)path
 {
+    if (![self validatePath:path]) {
+        return NO;
+    }
+
     NSURL *url = [NSURL fileURLWithPath:path];
 
     __block BOOL shouldDelete = YES;
