@@ -124,6 +124,12 @@ static NSString *const kDefaultFontName = @"Helvetica";
         return [NSString stringWithFormat:@"%@ pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.ascender)]];
     };
 
+    TWTFontMetricView *capHeightMetricView = [[TWTFontMetricView alloc] init];
+    capHeightMetricView.metricName = NSLocalizedString(@"Cap height", nil);
+    capHeightMetricView.metricValueBlock = ^(UIFont *font) {
+        return [NSString stringWithFormat:@"%@ pt", [self.pointSizeNumberFormatter stringFromNumber:@(font.capHeight)]];
+    };
+
     TWTFontMetricView *descenderMetricView = [[TWTFontMetricView alloc] init];
     descenderMetricView.metricName = NSLocalizedString(@"Descender", nil);
     descenderMetricView.metricValueBlock = ^(UIFont *font) {
@@ -162,6 +168,7 @@ static NSString *const kDefaultFontName = @"Helvetica";
 
     self.metricViews = @[ sizeMetricView,
                           ascenderMetricView,
+                          capHeightMetricView,
                           descenderMetricView,
                           lineHeightMetricView,
                           lineHeightMultiplierMetricView,
