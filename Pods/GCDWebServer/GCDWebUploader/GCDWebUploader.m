@@ -296,7 +296,7 @@
 
 - (instancetype)initWithUploadDirectory:(NSString*)path {
   if ((self = [super init])) {
-    NSBundle* siteBundle = [NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"GCDWebUploader" ofType:@"bundle"]];
+    NSBundle* siteBundle = [NSBundle bundleWithPath:[[NSBundle bundleForClass:[GCDWebServer class]] pathForResource:@"GCDWebUploader" ofType:@"bundle"]];
     if (siteBundle == nil) {
       return nil;
     }
