@@ -27,6 +27,7 @@
 		497CAB4018B59C9C000DD7DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 497CAB2818B59C9C000DD7DE /* UIKit.framework */; };
 		497CAB4818B59C9C000DD7DE /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 497CAB4618B59C9C000DD7DE /* InfoPlist.strings */; };
 		497CAB4A18B59C9C000DD7DE /* FontsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 497CAB4918B59C9C000DD7DE /* FontsTests.m */; };
+		498B1EE41BB1C7B100722870 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 498B1EE31BB1C7B100722870 /* Launch Screen.storyboard */; settings = {ASSET_TAGS = (); }; };
 		49A089BA1910504700283FE4 /* TWTEnvironment.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A089B91910504700283FE4 /* TWTEnvironment.m */; };
 		49A089BD1910523C00283FE4 /* TWTTextEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A089BC1910523C00283FE4 /* TWTTextEditorViewController.m */; };
 		49A089C01910528400283FE4 /* UIViewController+Fonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A089BF1910528400283FE4 /* UIViewController+Fonts.m */; };
@@ -79,6 +80,7 @@
 		497CAB4518B59C9C000DD7DE /* FontsTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FontsTests-Info.plist"; sourceTree = "<group>"; };
 		497CAB4718B59C9C000DD7DE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		497CAB4918B59C9C000DD7DE /* FontsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FontsTests.m; sourceTree = "<group>"; };
+		498B1EE31BB1C7B100722870 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		49A089B81910504700283FE4 /* TWTEnvironment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTEnvironment.h; sourceTree = "<group>"; };
 		49A089B91910504700283FE4 /* TWTEnvironment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTEnvironment.m; sourceTree = "<group>"; };
 		49A089BB1910523C00283FE4 /* TWTTextEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTTextEditorViewController.h; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 				497CAB2D18B59C9C000DD7DE /* InfoPlist.strings */,
 				497CAB3018B59C9C000DD7DE /* main.m */,
 				497CAB3218B59C9C000DD7DE /* Fonts-Prefix.pch */,
+				498B1EE31BB1C7B100722870 /* Launch Screen.storyboard */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -313,12 +316,9 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = TWT;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Two Toasters, LLC";
 				TargetAttributes = {
-					497CAB2018B59C9C000DD7DE = {
-						DevelopmentTeam = TYQ894B3WB;
-					};
 					497CAB3B18B59C9C000DD7DE = {
 						TestTargetID = 497CAB2018B59C9C000DD7DE;
 					};
@@ -347,6 +347,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				498B1EE41BB1C7B100722870 /* Launch Screen.storyboard in Resources */,
 				497CAB2F18B59C9C000DD7DE /* InfoPlist.strings in Resources */,
 				497CAB3718B59C9C000DD7DE /* Images.xcassets in Resources */,
 			);
@@ -489,6 +490,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -503,7 +505,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -536,7 +538,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 				VALIDATE_PRODUCT = YES;
@@ -553,6 +555,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fonts/Application/Fonts-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Fonts/Application/Fonts-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.twotoasters.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -569,6 +572,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fonts/Application/Fonts-Prefix.pch";
 				INFOPLIST_FILE = "$(SRCROOT)/Fonts/Application/Fonts-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.twotoasters.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -591,6 +595,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "FontsTests/FontsTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.twotoasters.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -609,6 +614,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Fonts/Application/Fonts-Prefix.pch";
 				INFOPLIST_FILE = "FontsTests/FontsTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.twotoasters.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
