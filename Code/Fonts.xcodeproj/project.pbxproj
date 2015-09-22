@@ -32,7 +32,7 @@
 		49A089C01910528400283FE4 /* UIViewController+Fonts.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A089BF1910528400283FE4 /* UIViewController+Fonts.m */; };
 		49A089C31910564C00283FE4 /* TWTUserDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = 49A089C21910564C00283FE4 /* TWTUserDefaults.m */; };
 		49E3371F1919770D00D09B83 /* TWTFontMetricView.m in Sources */ = {isa = PBXBuildFile; fileRef = 49E3371E1919770D00D09B83 /* TWTFontMetricView.m */; };
-		8A9E8EB6A9574275B35D8001 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27BCE612B01248A383999C07 /* libPods.a */; };
+		C71FA6F2D6C0634C913D34E4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E162DA8B3D0CAC9F45C7D970 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		27BCE612B01248A383999C07 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		10A8F731D50B17A8C5BE3946 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		4918CD0318B5A232005D8E55 /* TWTFontFamiliesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTFontFamiliesViewController.h; sourceTree = "<group>"; };
 		4918CD0418B5A232005D8E55 /* TWTFontFamiliesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTFontFamiliesViewController.m; sourceTree = "<group>"; };
 		4918CD0618B5A24C005D8E55 /* TWTFontPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTFontPreviewViewController.h; sourceTree = "<group>"; };
@@ -89,7 +89,8 @@
 		49A089C21910564C00283FE4 /* TWTUserDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTUserDefaults.m; sourceTree = "<group>"; };
 		49E3371D1919770D00D09B83 /* TWTFontMetricView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWTFontMetricView.h; sourceTree = "<group>"; };
 		49E3371E1919770D00D09B83 /* TWTFontMetricView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWTFontMetricView.m; sourceTree = "<group>"; };
-		E2F41BEC17984DFF8A8DAD90 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = ../Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		D26FBFE7E054FEF9210FDF02 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "../Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E162DA8B3D0CAC9F45C7D970 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +101,7 @@
 				497CAB2718B59C9C000DD7DE /* CoreGraphics.framework in Frameworks */,
 				497CAB2918B59C9C000DD7DE /* UIKit.framework in Frameworks */,
 				497CAB2518B59C9C000DD7DE /* Foundation.framework in Frameworks */,
-				8A9E8EB6A9574275B35D8001 /* libPods.a in Frameworks */,
+				C71FA6F2D6C0634C913D34E4 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,7 +190,7 @@
 				497CAB4318B59C9C000DD7DE /* FontsTests */,
 				497CAB2318B59C9C000DD7DE /* Frameworks */,
 				497CAB2218B59C9C000DD7DE /* Products */,
-				E2F41BEC17984DFF8A8DAD90 /* Pods.xcconfig */,
+				8AABBBF934F4E4174B2C5F7C /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -209,7 +210,7 @@
 				497CAB2618B59C9C000DD7DE /* CoreGraphics.framework */,
 				497CAB2818B59C9C000DD7DE /* UIKit.framework */,
 				497CAB3D18B59C9C000DD7DE /* XCTest.framework */,
-				27BCE612B01248A383999C07 /* libPods.a */,
+				E162DA8B3D0CAC9F45C7D970 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -255,6 +256,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8AABBBF934F4E4174B2C5F7C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D26FBFE7E054FEF9210FDF02 /* Pods.debug.xcconfig */,
+				10A8F731D50B17A8C5BE3946 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -267,6 +277,7 @@
 				497CAB1E18B59C9C000DD7DE /* Frameworks */,
 				497CAB1F18B59C9C000DD7DE /* Resources */,
 				8D792470A74A42E1BCC7592D /* Copy Pods Resources */,
+				4AC433DCF43E75FB625C766C /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -352,6 +363,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		4AC433DCF43E75FB625C766C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		8CFC28C8A1444A9687B2E0B5 /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -379,7 +405,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/../Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -519,7 +545,7 @@
 		};
 		497CAB4E18B59C9C000DD7DE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2F41BEC17984DFF8A8DAD90 /* Pods.xcconfig */;
+			baseConfigurationReference = D26FBFE7E054FEF9210FDF02 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -535,7 +561,7 @@
 		};
 		497CAB4F18B59C9C000DD7DE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2F41BEC17984DFF8A8DAD90 /* Pods.xcconfig */;
+			baseConfigurationReference = 10A8F731D50B17A8C5BE3946 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
