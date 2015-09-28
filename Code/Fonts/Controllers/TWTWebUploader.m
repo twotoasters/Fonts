@@ -119,6 +119,12 @@ NSString *const kTWTWebUploaderDidChangeURLNotification = @"TWTWebUploaderDidCha
 }
 
 
+- (void)webServerDidCompleteBonjourRegistration:(GCDWebServer *)server
+{
+    [self postDidChangeURLNotification];
+}
+
+
 - (void)webServerDidStop:(GCDWebServer *)server;
 {
     [self postDidChangeURLNotification];
